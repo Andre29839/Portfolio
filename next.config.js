@@ -5,7 +5,7 @@ const nextConfig = {
   },
   reactStrictMode: true,
   trailingSlash: true,
-  webpack(config, { isServer }) {
+  webpack(config) {
     // if (isServer) {
     //   require("./scripts/generate-sitemap");
     //   require("./scripts/draco");
