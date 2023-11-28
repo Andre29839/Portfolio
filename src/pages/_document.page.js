@@ -20,7 +20,7 @@ export default function Document() {
         <script
           dangerouslySetInnerHTML={{
             __html: `const initialTheme = JSON.parse(localStorage.getItem("theme"));
-                  document.body.dateset.theme`,
+                  document.body.dataset.theme = initialTheme || 'dark'`,
           }}
         />
         <Main />

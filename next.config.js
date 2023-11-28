@@ -5,12 +5,11 @@ const nextConfig = {
   },
   reactStrictMode: true,
   trailingSlash: true,
-  pageExtensions: ["page.js", "api.js"],
   webpack(config, { isServer }) {
-    if (isServer) {
-      require("./scripts/generate-sitemap");
-      require("./scripts/draco");
-    }
+    // if (isServer) {
+    //   require("./scripts/generate-sitemap");
+    //   require("./scripts/draco");
+    // }
 
     config.module.rules.push({
       test: /\.svg$/,

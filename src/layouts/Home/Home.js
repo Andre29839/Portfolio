@@ -11,8 +11,8 @@
 
 // import "css/main.min.css";
 
-const technologies = [];
+// const technologies = [];
 
 export const Home = () => {
-  return <div>Hello</div>;
+  return <div>Hello world</div>;
 };
