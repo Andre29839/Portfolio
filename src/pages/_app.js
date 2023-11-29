@@ -13,7 +13,6 @@ import { tokens } from "components/ThemeProvider/theme";
 import NavBar from "components/NavBar/NavBar";
 import ScrollRestore from "helpers/ScrollRestore";
 
-import styles from "layouts/App/_App.scss";
 import "css/main.min.css";
 
 export const AppContext = createContext({});
@@ -40,17 +39,17 @@ const App = ({ Component, pageProps }) => {
           </Head>
           <NavBar />
           <main tabIndex={-1} id="MainContent">
-            <AnimatePresence exitBeforeEnter>
+            <AnimatePresence mode="wait">
               <m.div
                 key={route}
-                className={styles.page}
+                className="page"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{
                   type: "tween",
                   ease: "linear",
-                  duration: msToNum(tokens.base.duration) / 1000,
+                  duration: msToNum(tokens.base.durationS) / 1000,
                   delay: 0.1,
                 }}
               >
