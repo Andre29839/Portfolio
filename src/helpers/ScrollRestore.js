@@ -1,7 +1,35 @@
-import React from "react";
+import { useIsPresent } from "framer-motion";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const ScrollRestore = () => {
-  return <div>ScrollRestore</div>;
+  const isPresent = useIsPresent();
+  const { asPath, beforePopState } = useRouter();
+
+  useEffect(() => {
+    window.history.scrollRestoration = "manual";
+  }, []);
+
+  useEffect(() => {
+    beforePopState(state => {
+      state.options.scroll = false;
+      return true;
+    });
+  }, [beforePopState]);
+
+  useEffect(() => {
+    if (!isPresent) return;
+    const hash = asPath.split("#")[1];
+    const targetElement = document.getElementById(hash);
+
+    if (hash && targetElement) {
+      window.scrollTo(0, targetElement.offsetTop);
+      targetElement.focus({ preventScroll: true });
+    } else {
+      window.scrollTo(0, 0);
+      document.body.focus({ preventScroll: true });
+    }
+  }, [asPath, isPresent]);
 };
 
 export default ScrollRestore;

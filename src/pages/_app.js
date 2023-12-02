@@ -3,14 +3,14 @@ import { useRouter } from "next/router";
 import { createContext, useEffect, useReducer } from "react";
 import { AnimatePresence, LazyMotion, domAnimation, m } from "framer-motion";
 
-import { msToNum } from "utils/style";
-import { useLocalStorage } from "hooks/useLocalStorage";
-import { initialState, reducer } from "helpers/reducer";
-
 import { ThemeProvider } from "components/ThemeProvider";
 import { tokens } from "components/ThemeProvider/theme";
-
 import NavBar from "components/NavBar/NavBar";
+
+import { msToNum } from "utils/style";
+import { useLocalStorage } from "hooks/useLocalStorage";
+
+import { initialState, reducer } from "helpers/reducer";
 import ScrollRestore from "helpers/ScrollRestore";
 
 import "css/main.min.css";
