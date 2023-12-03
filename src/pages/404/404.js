@@ -5,7 +5,7 @@ import { Transition } from "components/Transition";
 import { DecoderText } from "components/DecoderText";
 import { Text } from "components/Text";
 
-export function Page404() {
+export default function Page404() {
   return (
     <section>
       <Transition in>

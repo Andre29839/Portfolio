@@ -5,7 +5,6 @@ const nextConfig = {
   },
   reactStrictMode: true,
   trailingSlash: true,
-  pageExtensions: ["api.js"],
   webpack(config) {
     // if (isServer) {
     //   require("./scripts/generate-sitemap");

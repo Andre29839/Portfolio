@@ -1,1 +1,3 @@
-export { Page404 as default } from "./404";
+import Page404 from "./404";
+
+export default Page404;
