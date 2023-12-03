@@ -1,7 +1,7 @@
 import { Heading } from "components/Heading";
 import { Transition } from "components/Transition";
 
-import notFound from "assets/notfound.mp4";
+// import notFound from "assets/notfound.mp4";
 import { DecoderText } from "components/DecoderText";
 import { Text } from "components/Text";
 
