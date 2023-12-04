@@ -1,4 +1,5 @@
 import { classes } from "utils/style";
+
 import styles from "./_Text.module.scss";
 
 export const Text = ({

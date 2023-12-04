@@ -1,10 +1,11 @@
 @import "./variables/mixins";
 @import "./variables/variables";
+@import "./variables/global";
 
 @import "../layouts/Home/Home";
 @import "../layouts/App/App";
-@import "../pages/404/404";
 
+@import "../pages/404/404.module";
 @import "../components//Heading/Heading.module";
 @import "../components/DecoderText/DecoderText.module";
 @import "../components/Text/Text.module";

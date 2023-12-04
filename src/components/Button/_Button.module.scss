@@ -1,3 +1,5 @@
+@import "scss/variables/mixins";
+
 .button {
     --buttonSize: calc((56 / 16) * 1rem);
     --buttonFontSize: calc((18 / 16) * 1rem);
@@ -35,7 +37,7 @@
         clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%);
     }
 
-    @media (--mediaUseMotion) {
+    @include mediaUseMotion {
         transition-property: transform, opacity, color, background;
 
         &:hover {
@@ -83,7 +85,7 @@
             padding-left: calc(var(--buttonSpace) / 2);
         }
 
-        @media (--mediaUseMotion) {
+        @include mediaUseMotion {
             &::after {
                 transition: transform var(--durationM) var(--bezierFastoutSlowin);
             }
@@ -153,7 +155,7 @@
     transition-duration: var(--durationS);
     transition-timing-function: var(--bezierFastoutSlowin);
 
-    @media (--mediaUseMotion) {
+    @include mediaUseMotion {
         transition-property: transform, opacity, fill;
     }
 
@@ -165,7 +167,7 @@
         margin-left: var(--spaceS);
     }
 
-    @media (--mediaUseMotion) {
+    @include mediaUseMotion {
         .button:hover &[data-shift='true'] {
             transform: translate3d(var(--spaceXS), 0, 0);
         }

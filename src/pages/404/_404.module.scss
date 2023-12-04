@@ -1,10 +1,12 @@
+@import "scss/variables/_mixins.scss";
+
 .page {
     display: grid;
     grid-template-columns: 1fr 1fr;
     height: 100vh;
     padding-left: 140px;
 
-    @media (--mediaTablet) {
+    @include mediaTablet {
         padding-top: 80px;
         padding-bottom: 80px;
         padding-left: 80px;
@@ -13,7 +15,7 @@
         height: auto;
     }
 
-    @media (--mediaMobile) {
+    @include mediaMobile {
         padding-left: 0;
     }
 }
@@ -37,22 +39,22 @@
         z-index: var(--zIndex2);
     }
 
-    @media (--mediaLaptop) {
+    @include mediaLaptop {
         border-width: var(--spaceL);
     }
 
-    @media (--mediaTablet) {
+    @include mediaTablet {
         border-width: var(--space4XL);
     }
 
-    @media (--mediaMobile) {
+    @include mediaMobile {
         min-height: 240px;
         grid-row: 1;
         border-width: var(--spaceOuter);
         border-top: 0;
     }
 
-    @media (--mediaUseMotion) {
+    @include mediaUseMotion {
         &[data-visible='true']::after:global {
             animation-name: reveal;
         }
@@ -69,7 +71,7 @@
     transition-delay: 0.8s;
     transition-duration: var(--durationXL);
 
-    @media (--mediaMobile) {
+    @include mediaMobile {
         left: 0;
     }
 
@@ -108,7 +110,7 @@
     padding: 0 var(--spaceXL);
     height: 100%;
 
-    @media (--mediaMobile) {
+    @include mediaMobile {
         grid-row: 2;
         padding: 0 var(--spaceOuter);
     }
@@ -121,6 +123,7 @@
     width: 100%;
 }
 
+
 .title {
     margin-bottom: var(--spaceM);
     transition-property: opacity;
@@ -129,7 +132,7 @@
     transition-delay: 0.1s;
     opacity: 0;
 
-    @media (--mediaUseMotion) {
+    @include mediaUseMotion {
         transition-property: transform, opacity;
         transform: translate3d(0, var(--spaceL), 0);
     }
@@ -155,11 +158,11 @@
     overflow: hidden;
     flex: 0 0 auto;
 
-    @media (--mediaMobile) {
+    @include mediaMobile {
         font-size: calc((18 / 16) * 1rem);
     }
 
-    @media (--mediaUseMotion) {
+    @include mediaUseMotion {
         transition-property: transform, opacity;
         transform: translate3d(0, var(--spaceL), 0);
     }
@@ -178,7 +181,7 @@
     transition-delay: 0.3s;
     opacity: 0;
 
-    @media (--mediaUseMotion) {
+    @include mediaUseMotion {
         transition-property: transform, opacity;
         transform: translate3d(0, var(--spaceL), 0);
     }
@@ -198,7 +201,7 @@
     align-self: flex-start;
     padding-left: var(--spaceXXS);
 
-    @media (--mediaUseMotion) {
+    @include mediaUseMotion {
         transition-property: transform, opacity;
         transform: translate3d(0, var(--spaceL), 0);
     }

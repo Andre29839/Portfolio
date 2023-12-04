@@ -95,7 +95,7 @@ export const DecoderText = memo(
 
     return (
       <span className={classes(styled.text, className)} {...rest}>
-        <span aria-hidden className="content" ref={container} />
+        <span aria-hidden className={styled.content} ref={container} />
       </span>
     );
   }

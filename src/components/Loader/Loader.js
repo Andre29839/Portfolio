@@ -1,9 +1,9 @@
-import { useReducer } from "react";
 import { useReducedMotion } from "framer-motion";
 
-import styles from "./_Loader.module.scss";
 import { Text } from "components/Text";
 import { classes, cssProps } from "utils/style";
+
+import styles from "./_Loader.module.scss";
 
 export const Loader = ({
   className,
@@ -35,10 +35,10 @@ export const Loader = ({
       style={cssProps({ size, spanSize, gapSize }, style)}
       {...rest}
     >
-      <div className="contant">
-        <div className="span" />
-        <div className="span" />
-        <div className="span" />
+      <div className={styles.contant}>
+        <div className={styles.span} />
+        <div className={styles.span} />
+        <div className={styles.span} />
       </div>
     </div>
   );

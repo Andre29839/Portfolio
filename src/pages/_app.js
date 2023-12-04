@@ -13,6 +13,7 @@ import { useLocalStorage } from "hooks/useLocalStorage";
 import { initialState, reducer } from "helpers/reducer";
 import ScrollRestore from "helpers/ScrollRestore";
 
+import styles from "../layouts/App/_App.scss";
 import "css/main.min.css";
 
 export const AppContext = createContext({});
@@ -38,11 +39,11 @@ const App = ({ Component, pageProps }) => {
             />
           </Head>
           <NavBar />
-          <main tabIndex={-1} id="MainContent">
+          <main tabIndex={-1} className={styles.app} id="MainContent">
             <AnimatePresence mode="wait">
               <m.div
                 key={route}
-                className="page"
+                className={styles.page}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}

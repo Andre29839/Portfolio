@@ -1,6 +1,5 @@
 import { forwardRef } from "react";
 import RouterLink from "next/link";
-import Link from "next/link";
 
 import { classes } from "utils/style";
 
@@ -48,8 +47,7 @@ const ButtonContent = forwardRef(
     ref
   ) => {
     const isExternal = isExternalLink(href);
-    const defaultComponent = href ? Link : "button";
-    const Component = as || defaultComponent;
+    const Component = as || "button";
 
     return (
       <Component
@@ -67,16 +65,16 @@ const ButtonContent = forwardRef(
       >
         {!!icon && (
           <Icon
-            className="icon"
+            className={styles.icon}
             data-start={!iconOnly}
             data-shift={iconHoverShift}
             icon={icon}
           />
         )}
-        {!!children && <span className="text">{children}</span>}
+        {!!children && <span className={styles.text}>{children}</span>}
         {!!iconEnd && (
           <Icon
-            className="icon"
+            className={styles.icon}
             data-end={!iconOnly}
             data-shift={iconHoverShift}
             icon={iconEnd}
@@ -85,7 +83,7 @@ const ButtonContent = forwardRef(
         <Transition unmount in={loading}>
           {visible => (
             <Loader
-              className="loader"
+              className={styles.loader}
               size={32}
               text={loadingText}
               data-visible={visible}
