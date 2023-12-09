@@ -1,30 +1,25 @@
 @import "../../scss/variables/mixins";
 
-.monogram {
-    fill: var(--colorTextTitle);
-    transition: fill var(--durationL) ease;
-}
-
-.highlight {
-    fill: rgb(var(--rgbAccent));
-    opacity: 0;
-    transform: scale3d(1, 0, 1);
-    transform-origin: top;
-    transition: opacity 0.1s ease var(--durationM);
+.logo {
+    background-color: #FFD700;
+    width: 29.2px;
+    height: 29px;
+    transition: background-color var(--durationM) var(--bezierFastoutSlowin);
 
     @include mediaUseMotion {
         transition: transform var(--durationM) var(--bezierFastoutSlowin),
-            opacity 0.1s ease var(--durationM);
+            background-color var(--durationM) var(--bezierFastoutSlowin);
     }
 
-    :is(a:focus, a:hover, .monogram:hover) & {
-        opacity: 1;
+    :is(a:focus, a:hover, .logo:hover) & {
+        background-color: var(--rgbAccent);
         transform: scale3d(1, 1, 1);
         transform-origin: bottom;
-        transition: opacity 0.1s ease;
+        transition: opacity 0.1s ease, background-color var(--durationM) var(--bezierFastoutSlowin);
 
         @include mediaUseMotion {
-            transition: transform var(--durationM) var(--bezierFastoutSlowin), opacity 0.1s ease;
+            transition: transform var(--durationM) var(--bezierFastoutSlowin),
+                background-color var(--durationM) var(--bezierFastoutSlowin);
         }
     }
 }
