@@ -2,7 +2,7 @@ import { useIsPresent } from "framer-motion";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-const ScrollRestore = () => {
+export const ScrollRestore = () => {
   const isPresent = useIsPresent();
   const { asPath, beforePopState } = useRouter();
 
@@ -31,5 +31,3 @@ const ScrollRestore = () => {
     }
   }, [asPath, isPresent]);
 };
-
-export default ScrollRestore;
