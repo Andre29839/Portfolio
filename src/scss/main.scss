@@ -1,18 +1,2 @@
-@import "./variables/mixins";
 @import "./variables/variables";
 @import "./variables/global";
-
-@import "../layouts/Home/Home.module";
-@import "../layouts/App/App.module";
-
-@import "../pages/404/404.module";
-
-@import "../components/Heading/Heading.module";
-@import "../components/DecoderText/DecoderText.module";
-@import "../components/Text/Text.module";
-@import "../components/Button/Button.module";
-@import "../components/Icon/Icon.module";
-@import "../components/NavBar/NavBar.module";
-@import "../components/NavBar/NavToggle.module";
-@import "../components/NavBar/ThemeToggle.module";
-@import "../components/Monogram/Monogram.module"

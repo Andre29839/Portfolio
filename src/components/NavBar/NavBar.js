@@ -217,10 +217,10 @@ export const NavBar = () => {
   );
 };
 
-const NavbarIcons = ({ desktop }) => {
+const NavbarIcons = ({ desktop }) => (
   <div className={styles.navIcons}>
     {socialLinks.map(({ label, url, icon }) => (
-      <Link
+      <a
         key={label}
         data-navbar-item={desktop || undefined}
         className={styles.navIconLink}
@@ -230,7 +230,7 @@ const NavbarIcons = ({ desktop }) => {
         rel="noopener noreferrer"
       >
         <Icon className={styles.navIcon} icon={icon} />
-      </Link>
+      </a>
     ))}
-  </div>;
-};
+  </div>
+);

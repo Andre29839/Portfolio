@@ -63,7 +63,7 @@ button.toggle {
         }
     }
 
-    &[data-open='true'] &[data-close='true'] {
+    &[data-open='true'][data-close='true'] {
         opacity: 1;
 
         @include mediaUseMotion {
