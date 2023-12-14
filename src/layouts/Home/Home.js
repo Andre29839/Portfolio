@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
-import styles from "./_Home.module.scss";
 import { Intro } from "./Intro";
+
+import styles from "./_Home.module.scss";
 
 const disciplines = ["React", "Next.js", "Vite"];
 
