@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Intro } from "./Intro";
 
 import styles from "./_Home.module.scss";
+import { Profile } from "./Profile";
 
 const disciplines = ["React", "Next.js", "Vite"];
 
@@ -13,10 +14,10 @@ export const Home = () => {
   const intro = useRef();
   const projectOne = useRef();
   const projectTwo = useRef();
-  const datails = useRef();
+  const details = useRef();
 
   useEffect(() => {
-    const sections = [intro, projectOne, projectTwo, datails];
+    const sections = [intro, projectOne, projectTwo, details];
 
     const sectionObserver = new IntersectionObserver(
       (enteries, observer) => {
@@ -62,6 +63,11 @@ export const Home = () => {
         sectionRef={intro}
         disciplines={disciplines}
         scrollIndicatorHidden={scrollIndicatorHidden}
+      />
+      <Profile
+        sectionRef={details}
+        visible={visibleSections.includes(details.current)}
+        id="details"
       />
     </div>
   );

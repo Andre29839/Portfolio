@@ -64,7 +64,7 @@ export function Intro({
       ref={sectionRef}
       id={id}
       aria-labelledby={titleId}
-      tabindex={-1}
+      tabIndex={-1}
       {...rest}
     >
       <Transition in key={theme.themeId} timeout={3000}>

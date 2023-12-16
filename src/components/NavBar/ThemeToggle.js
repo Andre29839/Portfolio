@@ -1,7 +1,9 @@
 import { useId } from "react";
 
 import { Button } from "components/Button";
+
 import { useAppContext } from "hooks";
+
 import styles from "./_ThemeToggle.module.scss";
 
 export const ThemeToggle = ({ isMobile, ...rest }) => {

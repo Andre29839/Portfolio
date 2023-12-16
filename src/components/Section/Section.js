@@ -1,6 +1,8 @@
 import { forwardRef } from "react";
-import styles from "./_Section.module.scss";
+
 import { classes } from "utils/style";
+
+import styles from "./_Section.module.scss";
 
 export const Section = forwardRef(
   ({ as: Component = "div", children, className, ...rest }, ref) => (
