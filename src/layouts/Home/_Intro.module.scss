@@ -53,7 +53,7 @@
     }
 
     @include mediaTablet {
-        font-size: calc((18 / 16) * 1rem);
+        font-size: calc((16 / 16) * 1rem);
     }
 
     @include mediaMobile {

@@ -1,9 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 
 import { Intro } from "./Intro";
+import { ProjectSummary } from "./ProjectSummary";
+import { Profile } from "./Profile";
+
+import languageCoach from "assets/language-coach.jpg";
+import cinemania from "assets/cinemania.jpg";
 
 import styles from "./_Home.module.scss";
-import { Profile } from "./Profile";
 
 const disciplines = ["React", "Next.js", "Vite"];
 
@@ -63,6 +67,51 @@ export const Home = () => {
         sectionRef={intro}
         disciplines={disciplines}
         scrollIndicatorHidden={scrollIndicatorHidden}
+      />
+      <ProjectSummary
+        id="project-1"
+        sectionRef={projectOne}
+        visible={visibleSections.includes(projectOne.current)}
+        index={1}
+        title="Commercial projects"
+        description="Projects that were created for business"
+        buttonText="View project"
+        buttonLink="/projects/commercial"
+        model={{
+          type: "laptop",
+          alt: "Commercial projects",
+          textures: [
+            {
+              srcSet: [languageCoach],
+              placeholder: languageCoach,
+            },
+          ],
+        }}
+      />
+      <ProjectSummary
+        id="project-2"
+        alternate
+        sectionRef={projectTwo}
+        visible={visibleSections.includes(projectTwo.current)}
+        index={2}
+        title="Mobile application"
+        disciplines="Mobile application in React Native"
+        buttonText="View projects"
+        buttonLink="/projects/mobile"
+        model={{
+          type: "phone",
+          alt: "Mobile App",
+          textures: [
+            {
+              srcSet: [languageCoach],
+              placeholder: languageCoach,
+            },
+            {
+              srcSet: [languageCoach],
+              placeholder: languageCoach,
+            },
+          ],
+        }}
       />
       <Profile
         sectionRef={details}

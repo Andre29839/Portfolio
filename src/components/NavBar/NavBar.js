@@ -153,7 +153,7 @@ export const NavBar = () => {
         aria-label="Andrii Nepomniashchyi, Frontend Developer"
         onClick={handleMobileNavClick}
       >
-        <Monogram highlight />
+        <Monogram highlight={true.toString()} />
       </Link>
       <NavToggle
         onClick={() =>

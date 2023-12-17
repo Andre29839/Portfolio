@@ -47,7 +47,9 @@ export const cleanRenderer = renderer => {
 
 export const removeLights = lights => {
   for (const light of lights) {
-    light.parent.remove(light);
+    if (light.parent) {
+      light.parent.remove(light);
+    }
   }
 };
 
@@ -59,4 +61,6 @@ export const getChild = (name, object) => {
       node = child;
     }
   });
+
+  return node;
 };
