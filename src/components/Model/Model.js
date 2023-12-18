@@ -1,4 +1,5 @@
 import { animate, useReducedMotion, useSpring } from "framer-motion";
+import { useInViewport } from "hooks";
 import {
   createRef,
   startTransition,
@@ -14,22 +15,19 @@ import {
   Group,
   MathUtils,
   Mesh,
-  MeshPhongMaterial,
+  MeshBasicMaterial,
+  MeshDepthMaterial,
   OrthographicCamera,
   PerspectiveCamera,
+  PlaneGeometry,
   Scene,
   ShaderMaterial,
   Vector3,
   WebGLRenderTarget,
   WebGLRenderer,
-  SRGBEncoding,
-  PlaneGeometry,
-  NoColorSpace,
+  sRGBEncoding,
 } from "three";
 import { HorizontalBlurShader, VerticalBlurShader } from "three-stdlib";
-
-import { ModelAnimationType } from "./deviceModels";
-import { useInViewport } from "hooks";
 import { resolveSrcFromSrcSet } from "utils/image";
 import { classes, cssProps, numToMs } from "utils/style";
 import {
@@ -39,8 +37,8 @@ import {
   removeLights,
   textureLoader,
 } from "utils/three";
-
 import styles from "./_Model.module.scss";
+import { ModelAnimationType } from "./deviceModels";
 
 const MeshType = {
   Frame: "Frame",
@@ -99,9 +97,9 @@ export const Model = ({
       failIfMajorPerformanceCaveat: true,
     });
 
-    renderer.current.setPixelRatio(2);
+    renderer.current.setPixelRatio(5);
     renderer.current.setSize(clientWidth, clientHeight);
-    renderer.current.outputEncoding = SRGBEncoding;
+    renderer.current.outputEncoding = sRGBEncoding;
     renderer.current.physicallyCorrectLights = true;
 
     camera.current = new PerspectiveCamera(
@@ -143,15 +141,13 @@ export const Model = ({
 
     renderTarget.current = new WebGLRenderTarget(
       renderTargetSize,
-      renderTargetSize,
-      { samples: 0 }
+      renderTargetSize
     );
     renderTarget.current.texture.generateMipmaps = false;
 
     renderTargetBlur.current = new WebGLRenderTarget(
       renderTargetSize,
-      renderTargetSize,
-      { samples: 0 }
+      renderTargetSize
     );
     renderTargetBlur.current.texture.generateMipmaps = false;
 
@@ -159,7 +155,7 @@ export const Model = ({
       Math.PI / 2
     );
 
-    const planeMaterial = new MeshPhongMaterial({
+    const planeMaterial = new MeshBasicMaterial({
       map: renderTarget.current.texture,
       opacity: shadowOpacity,
       transparent: true,
@@ -173,7 +169,7 @@ export const Model = ({
     blurPlane.current.visible = false;
     shadowGroup.current.add(blurPlane.current);
 
-    const fillMaterial = new MeshPhongMaterial({
+    const fillMaterial = new MeshBasicMaterial({
       color: 0xffffff,
       opacity: 0,
       transparent: true,
@@ -195,7 +191,7 @@ export const Model = ({
     shadowCamera.current.rotation.x = Math.PI / 2;
     shadowGroup.current.add(shadowCamera.current);
 
-    depthMaterial.current = new MeshPhongMaterial();
+    depthMaterial.current = new MeshDepthMaterial();
     depthMaterial.current.userData.darkness = { value: shadowDarkness };
     depthMaterial.current.onBeforeCompile = shader => {
       shader.uniforms.darkness = depthMaterial.current.userData.darkness;
@@ -235,15 +231,9 @@ export const Model = ({
     blurPlane.current.visible = true;
 
     blurPlane.current.material = horizontalBlurMaterial.current;
-    if (blurPlane.current.material) {
-      blurPlane.current.material.uniforms.tDiffuse.value =
-        renderTarget.current.texture;
-      blurPlane.current.material.uniforms.tDiffuse.value.colorSpace =
-        NoColorSpace;
-    }
-    if (horizontalBlurMaterial.current) {
-      horizontalBlurMaterial.current.uniforms.h.value = amount * (1 / 256);
-    }
+    blurPlane.current.material.uniforms.tDiffuse.value =
+      renderTarget.current.texture;
+    horizontalBlurMaterial.current.uniforms.h.value = amount * (1 / 256);
 
     renderer.current.setRenderTarget(renderTargetBlur.current);
     renderer.current.render(blurPlane.current, shadowCamera.current);
@@ -251,8 +241,6 @@ export const Model = ({
     blurPlane.current.material = verticalBlurMaterial.current;
     blurPlane.current.material.uniforms.tDiffuse.value =
       renderTargetBlur.current.texture;
-    blurPlane.current.material.uniforms.tDiffuse.value.colorSpace =
-      NoColorSpace;
     verticalBlurMaterial.current.uniforms.v.value = amount * (1 / 256);
 
     renderer.current.setRenderTarget(renderTarget.current);
@@ -262,34 +250,29 @@ export const Model = ({
   }, []);
 
   const renderFrame = useCallback(() => {
-    if (renderer.current && scene.current && camera.current) {
-      const blurAmount = 5;
+    const blurAmount = 5;
 
-      const initialBackground = scene.current.background;
-      scene.current.background = null;
+    const initialBackground = scene.current.background;
+    scene.current.background = null;
 
-      scene.current.overrideMaterial = depthMaterial.current;
+    scene.current.overrideMaterial = depthMaterial.current;
 
-      renderer.current.setRenderTarget(renderTarget.current);
-      renderer.current.render(scene.current, shadowCamera.current);
+    renderer.current.setRenderTarget(renderTarget.current);
+    renderer.current.render(scene.current, shadowCamera.current);
 
-      scene.current.overrideMaterial = null;
+    scene.current.overrideMaterial = null;
 
-      blurShadow(blurAmount);
+    blurShadow(blurAmount);
 
-      blurShadow(blurAmount * 0.4);
+    blurShadow(blurAmount * 0.4);
 
-      renderer.current.setRenderTarget(null);
-      scene.current.background = initialBackground;
+    renderer.current.setRenderTarget(null);
+    scene.current.background = initialBackground;
 
-      modelGroup.current.rotation.x = rotationX.get();
-      modelGroup.current.rotation.y = rotationY.get();
+    modelGroup.current.rotation.x = rotationX.get();
+    modelGroup.current.rotation.y = rotationY.get();
 
-      console.log(scene.current);
-      console.log(camera.current);
-
-      renderer.current.render(scene.current, camera.current);
-    }
+    renderer.current.render(scene.current, camera.current);
   }, [blurShadow, rotationX, rotationY]);
 
   useEffect(() => {
@@ -379,7 +362,7 @@ const Device = ({
 
   useEffect(() => {
     const applyScreenTexture = async (texture, node) => {
-      texture.colorSpace = NoColorSpace;
+      texture.encoding = sRGBEncoding;
       texture.flipY = false;
       texture.anisotropy = renderer.current.capabilities.getMaxAnisotropy();
       texture.generateMipmaps = false;

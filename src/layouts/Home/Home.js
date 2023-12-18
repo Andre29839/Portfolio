@@ -4,8 +4,10 @@ import { Intro } from "./Intro";
 import { ProjectSummary } from "./ProjectSummary";
 import { Profile } from "./Profile";
 
+import { Footer } from "components/Footer";
+
 import languageCoach from "assets/language-coach.jpg";
-import cinemania from "assets/cinemania.jpg";
+import moneyGuard from "assets/money-guard.jpg";
 
 import styles from "./_Home.module.scss";
 
@@ -18,10 +20,11 @@ export const Home = () => {
   const intro = useRef();
   const projectOne = useRef();
   const projectTwo = useRef();
+  const projectThree = useRef();
   const details = useRef();
 
   useEffect(() => {
-    const sections = [intro, projectOne, projectTwo, details];
+    const sections = [intro, projectOne, projectTwo, projectThree, details];
 
     const sectionObserver = new IntersectionObserver(
       (enteries, observer) => {
@@ -88,7 +91,7 @@ export const Home = () => {
           ],
         }}
       />
-      <ProjectSummary
+      {/* <ProjectSummary
         id="project-2"
         alternate
         sectionRef={projectTwo}
@@ -112,12 +115,33 @@ export const Home = () => {
             },
           ],
         }}
+      /> */}
+      <ProjectSummary
+        id="project-3"
+        sectionRef={projectThree}
+        visible={visibleSections.includes(projectThree.current)}
+        index={2}
+        title="Education projects"
+        description="Projects that were created during my studies"
+        buttonText="View project"
+        buttonLink="/projects/education"
+        model={{
+          type: "laptop",
+          alt: "Education projects",
+          textures: [
+            {
+              srcSet: [moneyGuard],
+              placeholder: moneyGuard,
+            },
+          ],
+        }}
       />
       <Profile
         sectionRef={details}
         visible={visibleSections.includes(details.current)}
         id="details"
       />
+      <Footer />
     </div>
   );
 };

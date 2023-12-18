@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 
 import { classes } from "utils/style";
 
-import styles from "./_Link.module.scss";
+import styles from "./_LinkPersonal.module.scss";
 
 const VALID_EXT = ["txt", "png", "jpg"];
 
