@@ -41,7 +41,9 @@ function shuffle(content, output, position) {
       return { type: CharType.Glyph, value: glyphs[rand] };
     }
 
-    return { type: CharType.Glyph, value: output[index].value };
+    if (output[index] !== undefined) {
+      return { type: CharType.Glyph, value: output[index].value };
+    }
   });
 }
 
@@ -59,7 +61,9 @@ export const DecoderText = memo(
 
       const renderOutput = () => {
         const characterMap = output.current.map(item => {
-          return `<span class="${[item.type]}">${item.value}</span>`;
+          if (item !== undefined) {
+            return `<span class="${[item.type]}">${item.value}</span>`;
+          }
         });
 
         containerInstance.innerHTML = characterMap.join("");

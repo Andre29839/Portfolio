@@ -1,4 +1,4 @@
-const { pxToRem } = require("utils/style");
+import { pxToRem } from "utils/style";
 
 const baseTokens = {
   rgbBlack: "0 0 0",
@@ -54,7 +54,7 @@ const baseTokens = {
   zIndex5: 64,
 };
 
-const tokenDesktop = {
+const tokensDesktop = {
   fontSizeH0: pxToRem(120),
   fontSizeH1: pxToRem(80),
 };
@@ -132,7 +132,7 @@ const light = {
 
 export const tokens = {
   base: baseTokens,
-  desktop: tokenDesktop,
+  desktop: tokensDesktop,
   laptop: tokensLaptop,
   tablet: tokensTablet,
   mobile: tokensMobile,

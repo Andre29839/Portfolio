@@ -7,7 +7,7 @@ import { ThemeProvider, tokens } from "components/ThemeProvider";
 import { NavBar } from "components/NavBar";
 
 import { msToNum } from "utils/style";
-import { useLocalStorage } from "hooks/useLocalStorage";
+import { useLocalStorage, useFoucFix } from "hooks";
 
 import { initialState, reducer } from "helpers/reducer";
 import { ScrollRestore } from "helpers/ScrollRestore";
@@ -22,6 +22,7 @@ const App = ({ Component, pageProps }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { route, asPath } = useRouter();
   const canonicalRoute = route === "/" ? "" : `${asPath}`;
+  useFoucFix();
 
   useEffect(() => {
     dispatch({ type: "setTheme", value: storedTheme || "dark" });
@@ -38,7 +39,7 @@ const App = ({ Component, pageProps }) => {
             />
           </Head>
           <NavBar />
-          <main tabIndex={-1} className={styles.app} id="MainContent">
+          <main className={styles.app} tabIndex={-1} id="MainContent">
             <AnimatePresence mode="wait">
               <m.div
                 key={route}

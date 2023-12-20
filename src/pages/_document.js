@@ -22,8 +22,10 @@ export default function Document() {
       <body data-theme="dark" tabIndex={-1}>
         <script
           dangerouslySetInnerHTML={{
-            __html: `const initialTheme = JSON.parse(localStorage.getItem("theme"));
-                  document.body.dataset.theme = initialTheme || 'dark'`,
+            __html: `
+              const initialTheme = JSON.parse(localStorage.getItem('theme'));
+              document.body.dataset.theme = initialTheme || 'dark';
+            `,
           }}
         />
         <Main />
