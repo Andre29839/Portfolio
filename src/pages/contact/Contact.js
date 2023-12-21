@@ -17,7 +17,7 @@ import { cssProps, msToNum, numToMs } from "utils/style";
 
 import styles from "./_Contact.module.scss";
 
-export const Contact = () => {
+export default function Contact() {
   const errorRef = useRef();
   const email = useFormInput("");
   const message = useFormInput("");
@@ -187,7 +187,7 @@ export const Contact = () => {
       <Footer className={styles.footer} />
     </Section>
   );
-};
+}
 
 function getStatusError({
   status,
