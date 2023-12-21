@@ -71,7 +71,7 @@ export const Contact = () => {
   return (
     <Section className={styles.contact}>
       <Transition unmount in={!complete} timeout={1600}>
-        {(_, status) => (
+        {(visible, status) => (
           <form className={styles.form} method="post" onSubmit={onSubmit}>
             <Heading
               className={styles.title}
