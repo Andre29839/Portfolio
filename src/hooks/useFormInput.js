@@ -1,34 +1,34 @@
 import { useState } from "react";
 
-export function useFormInpit(initialValue = "") {
+export function useFormInput(initialValue = "") {
   const [value, setValue] = useState(initialValue);
   const [error, setError] = useState();
   const [isDirty, setIsDirty] = useState(false);
 
-  const handleChange = e => {
-    setValue(e.target.value);
+  const handleChange = event => {
+    setValue(event.target.value);
     setIsDirty(true);
 
-    if (error && e.target.checkValidity()) {
+    if (error && event.target.checkValidity()) {
       setError(null);
     }
   };
 
-  const handleInvalid = e => {
-    e.preventDefault();
-    setError(e.target.validationMessage);
+  const handleInvalid = event => {
+    event.preventDefault();
+    setError(event.target.validationMessage);
   };
 
-  const handleBlur = e => {
+  const handleBlur = event => {
     if (isDirty) {
-      e.target.checkValidity();
+      event.target.checkValidity();
     }
   };
 
   return {
     value,
     error,
-    onchange: handleChange,
+    onChange: handleChange,
     onBlur: handleBlur,
     onInvalid: handleInvalid,
   };

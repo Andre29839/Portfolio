@@ -1,0 +1,16 @@
+.skills {
+    min-height: 146px;
+}
+
+.list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.item {
+    padding: 5px;
+    margin: 0 10px;
+    min-width: 40px;
+}

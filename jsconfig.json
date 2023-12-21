@@ -3,7 +3,4 @@
     "baseUrl": "src",
     "module": "commonjs"
   }
-  // "include": ["src"]
 }
-
-// "include": ["src", ".storybook/StoryContainer.js"]

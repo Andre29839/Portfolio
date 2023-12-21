@@ -10,6 +10,7 @@ import languageCoach from "assets/language-coach.jpg";
 import moneyGuard from "assets/money-guard.jpg";
 
 import styles from "./_Home.module.scss";
+import { Skills } from "./Skills";
 
 const disciplines = ["React", "Next.js", "Vite"];
 
@@ -22,9 +23,17 @@ export const Home = () => {
   const projectTwo = useRef();
   const projectThree = useRef();
   const details = useRef();
+  const skills = useRef();
 
   useEffect(() => {
-    const sections = [intro, projectOne, projectTwo, projectThree, details];
+    const sections = [
+      intro,
+      projectOne,
+      projectTwo,
+      projectThree,
+      details,
+      skills,
+    ];
 
     const sectionObserver = new IntersectionObserver(
       (enteries, observer) => {
@@ -140,6 +149,11 @@ export const Home = () => {
         sectionRef={details}
         visible={visibleSections.includes(details.current)}
         id="details"
+      />
+      <Skills
+        id="skills"
+        sectionRef={skills}
+        visible={visibleSections.includes(skills.current)}
       />
       <Footer />
     </div>

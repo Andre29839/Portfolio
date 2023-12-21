@@ -95,7 +95,7 @@ export function Intro({
                         timeout={{ enter: 3000, exit: 2000 }}
                         key={item}
                       >
-                        {status => (
+                        {(_, status) => (
                           <span
                             aria-hidden
                             className={styles.word}

@@ -104,15 +104,16 @@ export function createMediaTokenProperties() {
 
 export const tokenStyles = squish(`
 :root {
-    ${createThemeProperties(tokens.base)}}
+    ${createThemeProperties(tokens.base)}
+  }
 
 ${createMediaTokenProperties()}
 
-[data-theme="dark] {
+[data-theme="dark"] {
     ${createThemeProperties(theme.dark)}
 }
 
-[data-theme="light] {
+[data-theme="light"] {
     ${createThemeProperties(theme.light)}
 }
 `);
