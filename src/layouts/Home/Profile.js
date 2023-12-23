@@ -9,7 +9,6 @@ import { Button } from "components/Button";
 import { Divider } from "components/Divider";
 import { Image } from "components/Image";
 
-import profileKatakana from "assets/katakana-profile.svg?url";
 import profileImg from "assets/profile-image.jpg";
 
 import { media } from "utils/style";
