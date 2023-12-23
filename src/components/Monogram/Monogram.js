@@ -9,7 +9,7 @@ export const Monogram = forwardRef(({ ...props }, ref) => {
   const clipId = `${id}monogram-clip`;
   return (
     <div className={styles.logo}>
-      <Logo className={styles.logoPath} id={clipId} ref={ref} {...props} />
+      <Logo id={clipId} ref={ref} {...props} />
     </div>
   );
 });

@@ -1,16 +1,19 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, Suspense, useEffect, useReducer } from "react";
 import { AnimatePresence, LazyMotion, domAnimation, m } from "framer-motion";
 
 import { ThemeProvider, tokens } from "components/ThemeProvider";
 import { NavBar } from "components/NavBar";
+import { Loader } from "components/Loader";
 
 import { msToNum } from "utils/style";
 import { useLocalStorage, useFoucFix } from "hooks";
 
 import { initialState, reducer } from "helpers/reducer";
 import { ScrollRestore } from "helpers/ScrollRestore";
+
+import "i18n";
 
 import styles from "../layouts/App/_App.module.scss";
 import "css/main.min.css";
@@ -55,7 +58,9 @@ const App = ({ Component, pageProps }) => {
                 }}
               >
                 <ScrollRestore />
-                <Component {...pageProps} />
+                <Suspense fallback={<Loader />}>
+                  <Component {...pageProps} />
+                </Suspense>
               </m.div>
             </AnimatePresence>
           </main>

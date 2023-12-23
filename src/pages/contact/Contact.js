@@ -26,8 +26,8 @@ export default function Contact() {
   const [statusError, setStatusError] = useState("");
   const initDelay = tokens.base.durationS;
 
-  const onSubmit = async event => {
-    event.preventDefault();
+  const onSubmit = async e => {
+    e.preventDefault();
     setStatusError("");
 
     if (sending) return;
@@ -35,20 +35,17 @@ export default function Contact() {
     try {
       setSending(true);
 
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/message`,
-        {
-          method: "POST",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: email.value,
-            message: message.value,
-          }),
-        }
-      );
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email.value,
+          message: message.value,
+        }),
+      });
 
       const responseMessage = await response.json();
 
@@ -71,7 +68,7 @@ export default function Contact() {
   return (
     <Section className={styles.contact}>
       <Transition unmount in={!complete} timeout={1600}>
-        {(visible, status) => (
+        {(_, status) => (
           <form className={styles.form} method="post" onSubmit={onSubmit}>
             <Heading
               className={styles.title}

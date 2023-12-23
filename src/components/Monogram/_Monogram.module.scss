@@ -1,7 +1,7 @@
 @import "../../scss/variables/mixins";
 
 .logo {
-    background-color: #FFD700;
+    background-color: rgb(var(--rgbGold));
     width: 39.2px;
     height: 39.5px;
     transition: background-color var(--durationM) var(--bezierFastoutSlowin);
@@ -11,8 +11,8 @@
             background-color var(--durationM) var(--bezierFastoutSlowin);
     }
 
-    :is(a:focus, a:hover, .logo:hover) {
-        background-color: var(--rgbAccent);
+    &:hover {
+        background-color: rgb(var(--rgbAccent));
         transform: scale3d(1, 1, 1);
         transform-origin: bottom;
         transition: opacity 0.1s ease, background-color var(--durationM) var(--bezierFastoutSlowin);
@@ -22,4 +22,5 @@
                 background-color var(--durationM) var(--bezierFastoutSlowin);
         }
     }
+
 }

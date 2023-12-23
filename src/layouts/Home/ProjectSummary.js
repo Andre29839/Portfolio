@@ -7,13 +7,10 @@ import { Heading } from "components/Heading";
 import { deviceModels } from "components/Model/deviceModels";
 import { Section } from "components/Section";
 import { Text } from "components/Text";
-import { useTheme } from "components/ThemeProvider";
 import { Transition } from "components/Transition";
 
 import { useWindowSize } from "hooks";
-import { cssProps, media } from "utils/style";
-
-import projectKatakana from "assets/katakana-project.svg?url";
+import { media } from "utils/style";
 
 import styles from "./_ProjectSummary.module.scss";
 
@@ -33,30 +30,12 @@ export const ProjectSummary = ({
   ...rest
 }) => {
   const [focused, setFocused] = useState(false);
-  const theme = useTheme();
   const { width } = useWindowSize();
   const titleId = `${id}-title`;
   const isMobile = width <= media.tablet;
-  const svgOpacity = theme.themeId === "light" ? 0.7 : 1;
   const indexText = index < 10 ? `0${index}` : index;
   const phoneSizes = `(max-width: ${media.tablet}px) 30vw, 20vw`;
   const laptopSizes = `(max-width: ${media.tablet}px) 80vw, 40vw`;
-
-  const renderKatakana = (device, visible) => (
-    <svg
-      aria-hidden="true"
-      width="750"
-      height="137"
-      viewBox="0 0 750 137"
-      data-visible={visible}
-      data-light={theme.themeId === "light"}
-      style={cssProps({ opacity: svgOpacity })}
-      className={styles.svg}
-      data-device={device}
-    >
-      <use href={`${projectKatakana}#katakana-project`} />
-    </svg>
-  );
 
   const renderDetails = visible => (
     <div className={styles.details}>
@@ -95,7 +74,6 @@ export const ProjectSummary = ({
     <div className={styles.preview}>
       {model.type === "laptop" && (
         <>
-          {renderKatakana("laptop", visible)}
           <div className={styles.model} data-device="laptop">
             <Model
               alt={model.alt}
@@ -117,7 +95,6 @@ export const ProjectSummary = ({
       )}
       {model.type === "phone" && (
         <>
-          {renderKatakana("phone", visible)}
           <div className={styles.model} data-device="phone">
             <Model
               alt={model.alt}

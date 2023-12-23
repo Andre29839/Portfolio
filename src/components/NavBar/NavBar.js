@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
@@ -6,6 +7,7 @@ import { tokens, useTheme } from "components/ThemeProvider";
 import { Icon } from "components/Icon";
 import { Transition } from "components/Transition";
 import { Monogram } from "components/Monogram";
+import { TranslationPanel } from "components/TranslationPanel";
 
 import { useAppContext, useScrollToHash, useWindowSize } from "hooks";
 import { cssProps, media, msToNum, numToMs } from "utils/style";
@@ -27,6 +29,8 @@ export const NavBar = () => {
   const headerRef = useRef();
   const windowSize = useWindowSize();
   const scrollToHash = useScrollToHash();
+
+  const { t } = useTranslation();
 
   const isMobile = windowSize.width <= media.mobile || windowSize.height <= 696;
 
@@ -145,16 +149,19 @@ export const NavBar = () => {
 
   return (
     <header className={styles.navbar} ref={headerRef}>
-      <Link
-        href={route === "/" ? "/#intro" : "/"}
-        scroll={false}
-        data-navbar-item
-        className={styles.logo}
-        aria-label="Andrii Nepomniashchyi, Frontend Developer"
-        onClick={handleMobileNavClick}
-      >
-        <Monogram highlight={true.toString()} />
-      </Link>
+      <div className={styles.logoWrapper}>
+        <Link
+          href={route === "/" ? "/#intro" : "/"}
+          scroll={false}
+          data-navbar-item
+          className={styles.logo}
+          aria-label="Andrii Nepomniashchyi, Frontend Developer"
+          onClick={handleMobileNavClick}
+        >
+          <Monogram highlight={true.toString()} />
+        </Link>
+        <TranslationPanel />
+      </div>
       <NavToggle
         onClick={() =>
           dispatch({
@@ -175,7 +182,7 @@ export const NavBar = () => {
               aria-current={getCurrent(pathname)}
               onClick={handleNavItemClick}
             >
-              {label}
+              {t(label)}
             </Link>
           ))}
         </div>

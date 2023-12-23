@@ -22,7 +22,7 @@ export const Input = ({
   required,
   maxLength,
   type,
-  onChange = () => {}, // provide a default function in case onChange is not passed
+  onChange = () => {},
   ...rest
 }) => {
   const [focused, setFocused] = useState(false);

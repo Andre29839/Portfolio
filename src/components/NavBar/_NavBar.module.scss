@@ -29,10 +29,20 @@
     }
 }
 
+.logoWrapper {
+    margin-left: var(--space5XL);
+    margin-bottom: var(--spaceML);
+    display: flex;
+
+    &>:first-child {
+        margin-right: var(--spaceM);
+    }
+
+}
+
 .logo {
     display: flex;
     position: relative;
-    padding: var(--spaceS) var(--spaceS) var(--spaceL);
     z-index: var(--zIndex2);
 
     @include mediaMobile {
