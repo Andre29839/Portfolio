@@ -8,6 +8,7 @@ import { TextArea } from "./TextArea";
 import { classes, cssProps, msToNum } from "utils/style";
 
 import styles from "./_Input.module.scss";
+import { useTranslation } from "react-i18next";
 
 export const Input = ({
   id,
@@ -41,6 +42,8 @@ export const Input = ({
     }
   };
 
+  const { t } = useTranslation();
+
   return (
     <div
       className={classes(styles.container, className)}
@@ -56,7 +59,7 @@ export const Input = ({
           id={labelId}
           htmlFor={inputId}
         >
-          {label}
+          {t(label)}
         </label>
         <InputElement
           className={styles.input}

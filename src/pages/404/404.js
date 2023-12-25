@@ -10,8 +10,11 @@ import notFound from "assets/notfound.mp4";
 import notFoundPoster from "assets/notfound.jpg";
 
 import styles from "./_404.module.scss";
+import { useTranslation } from "react-i18next";
 
 export default function PageNotFound() {
+  const { t } = useTranslation();
+
   return (
     <section className={styles.page}>
       <Transition in>
@@ -34,19 +37,14 @@ export default function PageNotFound() {
                   as="h2"
                   level={3}
                 >
-                  <DecoderText
-                    text="Error: Redacted"
-                    start={visible}
-                    delay={300}
-                  />
+                  <DecoderText text={t("error")} start={visible} delay={300} />
                 </Heading>
                 <Text
                   className={styles.description}
                   data-visible={visible}
                   as="p"
                 >
-                  This page could not be found. It either doesn’t exist or was
-                  deleted. Or perhaps you don’t exist.
+                  {t("textError")}
                 </Text>
                 <Button
                   secondary
@@ -56,7 +54,7 @@ export default function PageNotFound() {
                   href="/"
                   icon="chevronRight"
                 >
-                  Back to homepage
+                  {t("errorButton")}
                 </Button>
               </div>
             </div>
@@ -80,7 +78,7 @@ export default function PageNotFound() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Animation from Ghost in the Shell (1995)
+                {t("errorVideo")}
               </Link>
             </div>
           </>

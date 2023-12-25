@@ -14,26 +14,37 @@ import profileImg from "assets/profile-image.jpg";
 import { media } from "utils/style";
 
 import styles from "./_Profile.module.scss";
+import { useTranslation } from "react-i18next";
 
-const ProfileText = ({ visible, titleId }) => (
-  <>
-    <Heading
-      className={styles.title}
-      data-visible={visible}
-      level={3}
-      id={titleId}
-    >
-      <DecoderText text="Hi there" start={visible} delay={500} />
-    </Heading>
-    <Text className={styles.description} data-visible={visible} size="1" as="p">
-      I’m Andrii
-    </Text>
-  </>
-);
+const ProfileText = ({ visible, titleId }) => {
+  const { t } = useTranslation();
+  return (
+    <>
+      <Heading
+        className={styles.title}
+        data-visible={visible}
+        level={3}
+        id={titleId}
+      >
+        <DecoderText text={t("hiHere")} start={visible} delay={500} />
+      </Heading>
+      <Text
+        className={styles.description}
+        data-visible={visible}
+        size="1"
+        as="p"
+      >
+        {t("profileText")}
+      </Text>
+    </>
+  );
+};
 
 export const Profile = ({ id, visible, sectionRef }) => {
   const [focused, setFocused] = useState(false);
   const titleId = `${id}-title`;
+
+  const { t } = useTranslation();
 
   return (
     <Section
@@ -58,7 +69,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
                 href="/contact"
                 icon="send"
               >
-                Send me a message
+                {t("sendMessage")}
               </Button>
             </div>
             <div className={styles.column}>
@@ -70,7 +81,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
                   collapseDelay={1000}
                 />
                 <div className={styles.tagText} data-visible={visible}>
-                  About Me
+                  {t("aboutMe")}
                 </div>
               </div>
               <div className={styles.image}>

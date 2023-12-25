@@ -16,6 +16,7 @@ import { useFormInput } from "hooks";
 import { cssProps, msToNum, numToMs } from "utils/style";
 
 import styles from "./_Contact.module.scss";
+import { useTranslation } from "react-i18next";
 
 export default function Contact() {
   const errorRef = useRef();
@@ -25,6 +26,8 @@ export default function Contact() {
   const [complete, setComplete] = useState(false);
   const [statusError, setStatusError] = useState("");
   const initDelay = tokens.base.durationS;
+
+  const { t } = useTranslation();
 
   const onSubmit = async e => {
     e.preventDefault();
@@ -52,7 +55,8 @@ export default function Contact() {
       const statusError = getStatusError({
         status: response?.status,
         errorMessage: responseMessage?.error,
-        fallback: "There was a problem sending your message",
+        fallback: t("contactErrorMessage"),
+        t,
       });
 
       if (statusError) throw new Error(statusError);
@@ -78,7 +82,7 @@ export default function Contact() {
               style={getDelay(tokens.base.durationXS, initDelay, 0.3)}
             >
               <DecoderText
-                text="Say hello"
+                text={t("contactSayHello")}
                 start={status !== "exited"}
                 delay={300}
               />
@@ -94,7 +98,7 @@ export default function Contact() {
               data-status={status}
               style={getDelay(tokens.base.durationXS, initDelay)}
               autoComplete="email"
-              label="Your Email"
+              label={t("contactEmail")}
               type="email"
               maxLength={512}
               {...email}
@@ -106,7 +110,7 @@ export default function Contact() {
               data-status={status}
               style={getDelay(tokens.base.durationS, initDelay)}
               autoComplete="off"
-              label="Message"
+              label={t("contactMessage")}
               maxLength={4096}
               {...message}
             />
@@ -138,11 +142,11 @@ export default function Contact() {
               style={getDelay(tokens.base.durationM, initDelay)}
               disabled={sending}
               loading={sending}
-              loadingText="Sending..."
+              loadingText={t("contactSending")}
               icon="send"
               type="submit"
             >
-              Send message
+              {t("contactSend")}
             </Button>
           </form>
         )}
@@ -156,7 +160,7 @@ export default function Contact() {
               className={styles.completeTitle}
               data-status={status}
             >
-              Message Sent
+              {t("contactMessageSend")}
             </Heading>
             <Text
               size="l"
@@ -165,7 +169,7 @@ export default function Contact() {
               data-status={status}
               style={getDelay(tokens.base.durationXS)}
             >
-              I’ll get back to you within a couple days, sit tight
+              {t("contactIWillBack")}
             </Text>
             <Button
               secondary
@@ -176,7 +180,7 @@ export default function Contact() {
               href="/"
               icon="chevronRight"
             >
-              Back to homepage
+              {t("errorButton")}
             </Button>
           </div>
         )}
@@ -186,23 +190,19 @@ export default function Contact() {
   );
 }
 
-function getStatusError({
-  status,
-  errorMessage,
-  fallback = "There was a problem with your request",
-}) {
+function getStatusError({ status, errorMessage, fallback, t }) {
   if (status === 200) return false;
 
   const statuses = {
-    500: "There was a problem with the server, try again later",
-    404: "There was a problem connecting to the server. Make sure you are connected to the internet",
+    500: t("problem500"),
+    404: t("problem404"),
   };
 
   if (errorMessage) {
     return errorMessage;
   }
 
-  return statuses[status] || fallback;
+  return statuses[status] || fallback || t("problemYourRequest");
 }
 
 function getDelay(delayMs, offset = numToMs(0), multiplier = 1) {

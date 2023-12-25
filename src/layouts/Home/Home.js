@@ -11,6 +11,7 @@ import moneyGuard from "assets/money-guard.jpg";
 
 import styles from "./_Home.module.scss";
 import { Skills } from "./Skills";
+import { useTranslation } from "react-i18next";
 
 const disciplines = ["React", "Next.js", "Vite"];
 
@@ -24,6 +25,8 @@ export const Home = () => {
   const projectThree = useRef();
   const details = useRef();
   const skills = useRef();
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     const sections = [
@@ -85,13 +88,13 @@ export const Home = () => {
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
-        title="Commercial projects"
-        description="Projects that were created for business"
-        buttonText="View project"
+        title={t("commercialProjects")}
+        description={t("commercialProjectDesc")}
+        buttonText={t("buttonProject")}
         buttonLink="/projects/commercial"
         model={{
           type: "laptop",
-          alt: "Commercial projects",
+          alt: t("commercialProjects"),
           textures: [
             {
               srcSet: [languageCoach],
@@ -106,13 +109,13 @@ export const Home = () => {
         sectionRef={projectTwo}
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
-        title="Mobile application"
-        disciplines="Mobile application in React Native"
-        buttonText="View projects"
+        title={t("mobileApplication")}
+        description={t("mobileDesc")}
+        buttonText={t("buttonProject")}
         buttonLink="/projects/mobile"
         model={{
           type: "phone",
-          alt: "Mobile App",
+          alt: t("mobileApplication"),
           textures: [
             {
               srcSet: [languageCoach],
@@ -130,13 +133,13 @@ export const Home = () => {
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={2}
-        title="Education projects"
-        description="Projects that were created during my studies"
-        buttonText="View project"
+        title={t("educationProjects")}
+        description={t("educationProjectDesc")}
+        buttonText={t("buttonProject")}
         buttonLink="/projects/education"
         model={{
           type: "laptop",
-          alt: "Education projects",
+          alt: t("educationProjects"),
           textures: [
             {
               srcSet: [moneyGuard],

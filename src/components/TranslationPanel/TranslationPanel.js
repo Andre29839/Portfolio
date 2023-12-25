@@ -19,6 +19,8 @@ export const TranslationPanel = () => {
     i18n.changeLanguage(language);
   };
 
+  const { t } = useTranslation();
+
   return (
     <>
       <button
@@ -28,7 +30,7 @@ export const TranslationPanel = () => {
         }}
         disabled={lang === "en" || lang === "en-US"}
       >
-        EN
+        {t("en")}
       </button>
       <button
         className={styles.button}
@@ -37,7 +39,7 @@ export const TranslationPanel = () => {
         }}
         disabled={lang === "ua"}
       >
-        UA
+        {t("ua")}
       </button>
     </>
   );

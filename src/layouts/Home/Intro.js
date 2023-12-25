@@ -15,6 +15,7 @@ import { cssProps } from "utils/style";
 import ArrowDown from "assets/arrow-down.svg";
 
 import styles from "./_Intro.module.scss";
+import { useTranslation } from "react-i18next";
 
 const DisplacementSphere = dynamic(() =>
   import("layouts/Home/DisplacementSphere").then(mod => mod.DisplacementSphere)
@@ -57,6 +58,8 @@ export function Intro({
     scrollToHash(e.currentTarget.href);
   };
 
+  const { t } = useTranslation();
+
   return (
     <Section
       className={styles.intro}
@@ -73,7 +76,7 @@ export function Intro({
             <DisplacementSphere />
             <header className={styles.text}>
               <h1 className={styles.name} data-visible={visible} id={titleId}>
-                <DecoderText text="Andrii Nepomniashchyi" delay={300} />
+                <DecoderText text={t("name")} delay={300} />
               </h1>
               <Heading level={0} as="h2" className={styles.title}>
                 <span aria-hidden className={styles.row}>
@@ -82,7 +85,7 @@ export function Intro({
                     data-status={status}
                     style={cssProps({ delay: tokens.base.durationXS })}
                   >
-                    Developer
+                    {t("developer")}
                   </span>
                   <span className={styles.line} data-statu={status} />
                 </span>

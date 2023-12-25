@@ -211,7 +211,7 @@ export const NavBar = () => {
                   ),
                 })}
               >
-                {label}
+                {t(label)}
               </Link>
             ))}
             <NavbarIcons />
