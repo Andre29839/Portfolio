@@ -48,6 +48,7 @@ const baseTokens = {
   space3XL: "64px",
   space4XL: "96px",
   space5XL: "128px",
+  space6XL: "144px",
   zIndex0: 0,
   zIndex1: 4,
   zIndex2: 8,

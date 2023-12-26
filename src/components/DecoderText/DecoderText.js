@@ -56,7 +56,7 @@ export const DecoderText = memo(
 
     useEffect(() => {
       const containerInstance = container.current;
-      const content = text.split("");
+      const content = text?.split("");
       let animation;
 
       const renderOutput = () => {

@@ -1,25 +1,15 @@
-import { useEffect, useState } from "react";
-import i18next from "i18next";
-import { useTranslation } from "react-i18next";
+import { useRouter } from "next/router";
 
 import styles from "./_TranslationPanel.module.scss";
+import { useDictionary } from "components/DictionaryContext/DictionaryContext";
 
 export const TranslationPanel = () => {
-  const { i18n } = useTranslation();
-  const [lang, setLang] = useState();
-
-  useEffect(() => {
-    setLang(i18next.language);
-    i18next.on("languageChanged", lng => {
-      setLang(lng);
-    });
-  }, []);
+  const router = useRouter();
+  const dict = useDictionary();
 
   const changeLanguage = language => {
-    i18n.changeLanguage(language);
+    router.push(router.asPath, undefined, { locale: language, scroll: false });
   };
-
-  const { t } = useTranslation();
 
   return (
     <>
@@ -28,18 +18,18 @@ export const TranslationPanel = () => {
         onClick={() => {
           changeLanguage("en");
         }}
-        disabled={lang === "en" || lang === "en-US"}
+        disabled={router.locale === "en"}
       >
-        {t("en")}
+        {dict?.en}
       </button>
       <button
         className={styles.button}
         onClick={() => {
           changeLanguage("ua");
         }}
-        disabled={lang === "ua"}
+        disabled={router.locale === "ua"}
       >
-        {t("ua")}
+        {dict?.ua}
       </button>
     </>
   );

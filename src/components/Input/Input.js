@@ -3,12 +3,12 @@ import { useId, useRef, useState } from "react";
 import { Icon } from "components/Icon";
 import { tokens } from "components/ThemeProvider";
 import { Transition } from "components/Transition";
+import { useDictionary } from "components/DictionaryContext/DictionaryContext";
 import { TextArea } from "./TextArea";
 
 import { classes, cssProps, msToNum } from "utils/style";
 
 import styles from "./_Input.module.scss";
-import { useTranslation } from "react-i18next";
 
 export const Input = ({
   id,
@@ -42,7 +42,7 @@ export const Input = ({
     }
   };
 
-  const { t } = useTranslation();
+  const dict = useDictionary();
 
   return (
     <div
@@ -59,7 +59,7 @@ export const Input = ({
           id={labelId}
           htmlFor={inputId}
         >
-          {t(label)}
+          {dict?.[label]}
         </label>
         <InputElement
           className={styles.input}

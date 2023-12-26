@@ -8,16 +8,17 @@ import { Transition } from "components/Transition";
 import { Button } from "components/Button";
 import { Divider } from "components/Divider";
 import { Image } from "components/Image";
+import { useDictionary } from "components/DictionaryContext/DictionaryContext";
 
 import profileImg from "assets/profile-image.jpg";
 
 import { media } from "utils/style";
 
 import styles from "./_Profile.module.scss";
-import { useTranslation } from "react-i18next";
 
 const ProfileText = ({ visible, titleId }) => {
-  const { t } = useTranslation();
+  const dict = useDictionary();
+
   return (
     <>
       <Heading
@@ -26,7 +27,7 @@ const ProfileText = ({ visible, titleId }) => {
         level={3}
         id={titleId}
       >
-        <DecoderText text={t("hiHere")} start={visible} delay={500} />
+        <DecoderText text={dict?.hiHere} start={visible} delay={500} />
       </Heading>
       <Text
         className={styles.description}
@@ -34,7 +35,7 @@ const ProfileText = ({ visible, titleId }) => {
         size="1"
         as="p"
       >
-        {t("profileText")}
+        {dict?.profileText}
       </Text>
     </>
   );
@@ -44,7 +45,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
   const [focused, setFocused] = useState(false);
   const titleId = `${id}-title`;
 
-  const { t } = useTranslation();
+  const dict = useDictionary();
 
   return (
     <Section
@@ -69,7 +70,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
                 href="/contact"
                 icon="send"
               >
-                {t("sendMessage")}
+                {dict?.sendMessage}
               </Button>
             </div>
             <div className={styles.column}>
@@ -81,7 +82,7 @@ export const Profile = ({ id, visible, sectionRef }) => {
                   collapseDelay={1000}
                 />
                 <div className={styles.tagText} data-visible={visible}>
-                  {t("aboutMe")}
+                  {dict?.aboutMe}
                 </div>
               </div>
               <div className={styles.image}>

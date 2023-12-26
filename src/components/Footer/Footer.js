@@ -1,19 +1,18 @@
-import { useTranslation } from "react-i18next";
-
 import { LinkPersonal } from "components/LinkPersonal";
 import { Text } from "components/Text";
+import { useDictionary } from "components/DictionaryContext/DictionaryContext";
 
 import { classes } from "utils/style";
 
 import styles from "./_Footer.module.scss";
 
 export const Footer = ({ className }) => {
-  const { t } = useTranslation();
+  const dict = useDictionary();
 
   return (
     <footer className={classes(styles.footer, className)}>
       <Text size="s" align="center">
-        <span className={styles.date}>© 2023 {t("name")}</span>
+        <span className={styles.date}>© 2023 {dict?.name}</span>
         <LinkPersonal
           secondary
           className={styles.link}
@@ -21,7 +20,7 @@ export const Footer = ({ className }) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          {t("contactMe")}
+          {dict?.contactMe}
         </LinkPersonal>
       </Text>
     </footer>

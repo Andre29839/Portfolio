@@ -6,11 +6,6 @@ const nextConfig = {
   reactStrictMode: true,
   trailingSlash: true,
   webpack(config) {
-    // if (isServer) {
-    //   require("./scripts/generate-sitemap");
-    //   require("./scripts/draco");
-    // }
-
     config.module.rules.push({
       test: /\.svg$/,
       resourceQuery: { not: [/url/] },
@@ -33,6 +28,18 @@ const nextConfig = {
     });
 
     return config;
+  },
+  i18n: {
+    locales: ["en", "ua"],
+    defaultLocale: "en",
+    // domains: [
+    //   {
+    //     domain: "andriinepomniashchyi.pp.ua",
+    //     defaultLocale: "en-US",
+    //     http: true,
+    //   },
+    // ],
+    // localeDetection: false
   },
 };
 

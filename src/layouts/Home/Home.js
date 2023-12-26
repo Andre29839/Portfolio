@@ -5,13 +5,13 @@ import { ProjectSummary } from "./ProjectSummary";
 import { Profile } from "./Profile";
 
 import { Footer } from "components/Footer";
+import { useDictionary } from "components/DictionaryContext/DictionaryContext";
 
 import languageCoach from "assets/language-coach.jpg";
 import moneyGuard from "assets/money-guard.jpg";
 
 import styles from "./_Home.module.scss";
 import { Skills } from "./Skills";
-import { useTranslation } from "react-i18next";
 
 const disciplines = ["React", "Next.js", "Vite"];
 
@@ -26,7 +26,7 @@ export const Home = () => {
   const details = useRef();
   const skills = useRef();
 
-  const { t } = useTranslation();
+  const dict = useDictionary();
 
   useEffect(() => {
     const sections = [
@@ -88,13 +88,13 @@ export const Home = () => {
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
-        title={t("commercialProjects")}
-        description={t("commercialProjectDesc")}
-        buttonText={t("buttonProject")}
+        title={dict?.commercialProjects}
+        description={dict?.commercialProjectDesc}
+        buttonText={dict?.buttonProject}
         buttonLink="/projects/commercial"
         model={{
           type: "laptop",
-          alt: t("commercialProjects"),
+          alt: dict?.commercialProjects,
           textures: [
             {
               srcSet: [languageCoach],
@@ -109,13 +109,13 @@ export const Home = () => {
         sectionRef={projectTwo}
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
-        title={t("mobileApplication")}
-        description={t("mobileDesc")}
-        buttonText={t("buttonProject")}
+        title={dict?.mobileApplication")}
+        description={dict?.mobileDesc")}
+        buttonText={dict?.buttonProject")}
         buttonLink="/projects/mobile"
         model={{
           type: "phone",
-          alt: t("mobileApplication"),
+          alt: dict?.mobileApplication"),
           textures: [
             {
               srcSet: [languageCoach],
@@ -133,13 +133,13 @@ export const Home = () => {
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={2}
-        title={t("educationProjects")}
-        description={t("educationProjectDesc")}
-        buttonText={t("buttonProject")}
+        title={dict?.educationProjects}
+        description={dict?.educationProjectDesc}
+        buttonText={dict?.buttonProject}
         buttonLink="/projects/education"
         model={{
           type: "laptop",
-          alt: t("educationProjects"),
+          alt: dict?.educationProjects,
           textures: [
             {
               srcSet: [moneyGuard],

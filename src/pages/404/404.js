@@ -5,15 +5,15 @@ import { Transition } from "components/Transition";
 import { DecoderText } from "components/DecoderText";
 import { Text } from "components/Text";
 import { Button } from "components/Button";
+import { useDictionary } from "components/DictionaryContext/DictionaryContext";
 
 import notFound from "assets/notfound.mp4";
 import notFoundPoster from "assets/notfound.jpg";
 
 import styles from "./_404.module.scss";
-import { useTranslation } from "react-i18next";
 
 export default function PageNotFound() {
-  const { t } = useTranslation();
+  const dict = useDictionary();
 
   return (
     <section className={styles.page}>
@@ -37,14 +37,14 @@ export default function PageNotFound() {
                   as="h2"
                   level={3}
                 >
-                  <DecoderText text={t("error")} start={visible} delay={300} />
+                  <DecoderText text={dict?.error} start={visible} delay={300} />
                 </Heading>
                 <Text
                   className={styles.description}
                   data-visible={visible}
                   as="p"
                 >
-                  {t("textError")}
+                  {dict?.textError}
                 </Text>
                 <Button
                   secondary
@@ -54,7 +54,7 @@ export default function PageNotFound() {
                   href="/"
                   icon="chevronRight"
                 >
-                  {t("errorButton")}
+                  {dict?.errorButton}
                 </Button>
               </div>
             </div>
@@ -78,7 +78,7 @@ export default function PageNotFound() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {t("errorVideo")}
+                {dict?.errorVideo}
               </Link>
             </div>
           </>

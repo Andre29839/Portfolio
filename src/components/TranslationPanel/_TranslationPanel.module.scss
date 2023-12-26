@@ -8,6 +8,8 @@
     display: inline-flex;
     align-items: center;
     text-transform: uppercase;
+    width: var(--space3XL);
+    justify-content: flex-end;
 
     &::after {
         content: '';

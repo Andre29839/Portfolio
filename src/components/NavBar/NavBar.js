@@ -1,4 +1,3 @@
-import { useTranslation } from "react-i18next";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
@@ -17,6 +16,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import { navLinks, socialLinks } from "./navData";
 
 import styles from "./_NavBar.module.scss";
+import { useDictionary } from "components/DictionaryContext/DictionaryContext";
 
 export const NavBar = () => {
   const [current, setCurrent] = useState();
@@ -29,8 +29,7 @@ export const NavBar = () => {
   const headerRef = useRef();
   const windowSize = useWindowSize();
   const scrollToHash = useScrollToHash();
-
-  const { t } = useTranslation();
+  const dict = useDictionary();
 
   const isMobile = windowSize.width <= media.mobile || windowSize.height <= 696;
 
@@ -182,7 +181,7 @@ export const NavBar = () => {
               aria-current={getCurrent(pathname)}
               onClick={handleNavItemClick}
             >
-              {t(label)}
+              {dict?.[label]}
             </Link>
           ))}
         </div>
@@ -211,7 +210,7 @@ export const NavBar = () => {
                   ),
                 })}
               >
-                {t(label)}
+                {dict?.[label]}
               </Link>
             ))}
             <NavbarIcons />

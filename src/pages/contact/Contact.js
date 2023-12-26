@@ -11,12 +11,12 @@ import { Icon } from "components/Icon";
 import { Button } from "components/Button";
 import { Text } from "components/Text";
 import { Footer } from "components/Footer";
+import { useDictionary } from "components/DictionaryContext/DictionaryContext";
 
 import { useFormInput } from "hooks";
 import { cssProps, msToNum, numToMs } from "utils/style";
 
 import styles from "./_Contact.module.scss";
-import { useTranslation } from "react-i18next";
 
 export default function Contact() {
   const errorRef = useRef();
@@ -27,7 +27,7 @@ export default function Contact() {
   const [statusError, setStatusError] = useState("");
   const initDelay = tokens.base.durationS;
 
-  const { t } = useTranslation();
+  const dict = useDictionary();
 
   const onSubmit = async e => {
     e.preventDefault();
@@ -55,8 +55,8 @@ export default function Contact() {
       const statusError = getStatusError({
         status: response?.status,
         errorMessage: responseMessage?.error,
-        fallback: t("contactErrorMessage"),
-        t,
+        fallback: dict?.contactErrorMessage,
+        dict,
       });
 
       if (statusError) throw new Error(statusError);
@@ -82,7 +82,7 @@ export default function Contact() {
               style={getDelay(tokens.base.durationXS, initDelay, 0.3)}
             >
               <DecoderText
-                text={t("contactSayHello")}
+                text={dict?.contactSayHello}
                 start={status !== "exited"}
                 delay={300}
               />
@@ -98,7 +98,7 @@ export default function Contact() {
               data-status={status}
               style={getDelay(tokens.base.durationXS, initDelay)}
               autoComplete="email"
-              label={t("contactEmail")}
+              label={dict?.contactEmail}
               type="email"
               maxLength={512}
               {...email}
@@ -110,7 +110,7 @@ export default function Contact() {
               data-status={status}
               style={getDelay(tokens.base.durationS, initDelay)}
               autoComplete="off"
-              label={t("contactMessage")}
+              label={dict?.contactMessage}
               maxLength={4096}
               {...message}
             />
@@ -142,11 +142,11 @@ export default function Contact() {
               style={getDelay(tokens.base.durationM, initDelay)}
               disabled={sending}
               loading={sending}
-              loadingText={t("contactSending")}
+              loadingText={dict?.contactSending}
               icon="send"
               type="submit"
             >
-              {t("contactSend")}
+              {dict?.contactSend}
             </Button>
           </form>
         )}
@@ -160,7 +160,7 @@ export default function Contact() {
               className={styles.completeTitle}
               data-status={status}
             >
-              {t("contactMessageSend")}
+              {dict?.contactMessageSend}
             </Heading>
             <Text
               size="l"
@@ -169,7 +169,7 @@ export default function Contact() {
               data-status={status}
               style={getDelay(tokens.base.durationXS)}
             >
-              {t("contactIWillBack")}
+              {dict?.contactIWillBack}
             </Text>
             <Button
               secondary
@@ -180,7 +180,7 @@ export default function Contact() {
               href="/"
               icon="chevronRight"
             >
-              {t("errorButton")}
+              {dict?.errorButton}
             </Button>
           </div>
         )}
@@ -190,19 +190,19 @@ export default function Contact() {
   );
 }
 
-function getStatusError({ status, errorMessage, fallback, t }) {
+function getStatusError({ status, errorMessage, fallback, dict }) {
   if (status === 200) return false;
 
   const statuses = {
-    500: t("problem500"),
-    404: t("problem404"),
+    500: dict?.problem500,
+    404: dict?.problem404,
   };
 
   if (errorMessage) {
     return errorMessage;
   }
 
-  return statuses[status] || fallback || t("problemYourRequest");
+  return statuses[status] || fallback || dict?.problemYourRequest;
 }
 
 function getDelay(delayMs, offset = numToMs(0), multiplier = 1) {
