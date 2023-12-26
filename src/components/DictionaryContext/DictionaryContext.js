@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { getDictionary } from "pages/[lang]/dictionaries";
+import getDictionary from "pages/[lang]/dictionaries";
 import { Loader } from "components/Loader";
 
 const DictionaryContext = createContext();

@@ -5,8 +5,10 @@ const dictionaries = {
   ua: () => import("./dictionaries/ua.json").then(module => module.default),
 };
 
-export const getDictionary = async locale => {
+const getDictionary = async locale => {
   if (typeof dictionaries[locale] === "function") {
     return dictionaries[locale]();
   }
 };
+
+export default getDictionary;
