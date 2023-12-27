@@ -1,8 +1,8 @@
+import cinemania from "assets/cinemania.jpg";
+import minimal from "assets/minimal.jpg";
 import moneyGuard from "assets/money-guard.jpg";
 import waterTracker from "assets/water-tracker.png";
 import carRent from "assets/car-rent.jpg";
-import cinemania from "assets/cinemania.jpg";
-import minamal from "assets/minimal.jpg";
 
 export const educationProjects = [
   {
@@ -80,21 +80,21 @@ export const educationProjects = [
     url: "https://andre29839.github.io/error-404_team_name_not_found/",
   },
   {
-    img: minamal,
+    img: minimal,
     title: "Minimal",
-    description: "descMinamal",
+    description: "descminimal",
     roles: ["rolesAdaptive", "rolesProfessional", "rolesQuikly"],
-    headingProject: "headingMinamal",
+    headingProject: "headingminimal",
     textProject: [
-      "textMinamal1",
+      "textminimal1",
 
-      "textMinamal2",
+      "textminimal2",
 
-      "textMinamal3",
+      "textminimal3",
 
-      "textMinamal4",
+      "textminimal4",
 
-      "textMinamal5",
+      "textminimal5",
     ],
     url: "https://andre29839.github.io/team.project/",
   },
