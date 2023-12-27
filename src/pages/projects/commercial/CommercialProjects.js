@@ -1,4 +1,4 @@
-import { commercialProjects } from "./commercialProject";
+import { commercialProjects } from "layouts/Project/commercialProject";
 import ProjectList from "layouts/Project/ProjectList";
 
 const CommercialProjects = () => {
