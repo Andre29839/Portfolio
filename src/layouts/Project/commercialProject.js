@@ -1,4 +1,4 @@
-import englishBackground from "../../assets/language-coach.jpg";
+import englishBackground from "assets/language-coach.jpg";
 
 export const commercialProjects = [
   {

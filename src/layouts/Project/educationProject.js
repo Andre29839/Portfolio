@@ -1,8 +1,8 @@
-import moneyGuard from "../../assets/money-guard.jpg";
-import waterTracker from "../../assets/water-tracker.png";
-import carRent from "../../assets/car-rent.jpg";
-// import cinemania from "../../assets/cinemania.jpg";
-// import minimal from "../../assets/minimal.jpg";
+import moneyGuard from "assets/money-guard.jpg";
+import waterTracker from "assets/water-tracker.png";
+import carRent from "assets/car-rent.jpg";
+import cinemania from "assets/cinemania.jpg";
+import minimal from "assets/minimal.jpg";
 
 export const educationProjects = [
   {
@@ -62,40 +62,40 @@ export const educationProjects = [
     ],
     url: "https://andre29839.github.io/Car_Rent/",
   },
-  // {
-  //   img: cinemania,
-  //   title: "Cinemania",
-  //   description: "descCinemania",
-  //   roles: ["rolesAdaptive", "rolesProfessional", "rolesQuikly"],
-  //   headingProject: "headingCinemania",
-  //   textProject: [
-  //     "textCinemania1",
+  {
+    img: cinemania,
+    title: "Cinemania",
+    description: "descCinemania",
+    roles: ["rolesAdaptive", "rolesProfessional", "rolesQuikly"],
+    headingProject: "headingCinemania",
+    textProject: [
+      "textCinemania1",
 
-  //     "textCinemania2",
+      "textCinemania2",
 
-  //     "textCinemania3",
+      "textCinemania3",
 
-  //     "textCinemania4",
-  //   ],
-  //   url: "https://andre29839.github.io/error-404_team_name_not_found/",
-  // },
-  // {
-  //   img: minimal,
-  //   title: "Minimal",
-  //   description: "descminimal",
-  //   roles: ["rolesAdaptive", "rolesProfessional", "rolesQuikly"],
-  //   headingProject: "headingminimal",
-  //   textProject: [
-  //     "textminimal1",
+      "textCinemania4",
+    ],
+    url: "https://andre29839.github.io/error-404_team_name_not_found/",
+  },
+  {
+    img: minimal,
+    title: "Minimal",
+    description: "descMinimal",
+    roles: ["rolesAdaptive", "rolesProfessional", "rolesQuikly"],
+    headingProject: "headingMinimal",
+    textProject: [
+      "textMinimal1",
 
-  //     "textminimal2",
+      "textMinimal2",
 
-  //     "textminimal3",
+      "textMinimal3",
 
-  //     "textminimal4",
+      "textMinimal4",
 
-  //     "textminimal5",
-  //   ],
-  //   url: "https://andre29839.github.io/team.project/",
-  // },
+      "textMinimal5",
+    ],
+    url: "https://andre29839.github.io/team.project/",
+  },
 ];
