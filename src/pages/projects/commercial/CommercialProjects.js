@@ -1,7 +1,8 @@
-import React from "react";
+import { commercialProjects } from "./commercialProject";
+import ProjectList from "layouts/Project/ProjectList";
 
 const CommercialProjects = () => {
-  return <div>CommercialProjects</div>;
+  return <ProjectList projects={commercialProjects} />;
 };
 
 export default CommercialProjects;

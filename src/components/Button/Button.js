@@ -1,5 +1,5 @@
+import { useRouter } from "next/router";
 import { forwardRef } from "react";
-import RouterLink from "next/link";
 
 import { classes } from "utils/style";
 
@@ -14,14 +14,21 @@ function isExternalLink(href) {
 }
 
 export const Button = forwardRef(({ href, ...rest }, ref) => {
+  const router = useRouter();
+
   if (isExternalLink(href) || !href) {
     return <ButtonContent href={href} ref={ref} {...rest} />;
   }
 
+  const handleClick = event => {
+    if (!isExternalLink && href) {
+      event.preventDefault();
+      router.push(href);
+    }
+  };
+
   return (
-    <RouterLink passHref href={href} scroll={false}>
-      <ButtonContent href={href} ref={ref} {...rest} />
-    </RouterLink>
+    <ButtonContent href={href} ref={ref} {...rest} onClick={handleClick} />
   );
 });
 
@@ -47,7 +54,8 @@ const ButtonContent = forwardRef(
     ref
   ) => {
     const isExternal = isExternalLink(href);
-    const Component = as || "button";
+    const defaultComponent = href ? "a" : "button";
+    const Component = as || defaultComponent;
 
     return (
       <Component

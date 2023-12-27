@@ -358,3 +358,18 @@
         opacity: 1;
     }
 }
+
+.button {
+    opacity: 0;
+    transition: opacity var(--durationXL) ease var(--durationL);
+    width: var(--space7XL);
+    margin-top: var(--spaceM);
+    margin-left: var(--spaceS);
+    display: flex;
+
+    &[data-visible='true'] {
+        transform: none;
+        opacity: 1;
+
+    }
+}

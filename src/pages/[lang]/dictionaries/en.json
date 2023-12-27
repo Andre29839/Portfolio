@@ -1,12 +1,15 @@
 {
   "name": "Andrii Nepomniashchyi",
+
   "contactMe": "Contact me in Telegram",
   "projects": "Projects",
   "details": "Details",
   "skills": "Skills",
   "contact": "Contact",
+
   "en": "en",
   "ua": "ua",
+
   "commercialProjects": "Commercial projects",
   "commercialProjectDesc": "Projects that were created for business",
   "educationProjects": "Education projects",
@@ -14,15 +17,19 @@
   "buttonProject": "View project",
   "mobileApplication": "Mobile applications",
   "mobileDesc": "Mobile application in React Native",
+
   "developer": "Developer",
   "hiHere": "Hi here",
   "profileText": "I’m Andrii",
   "sendMessage": "Send me a message",
   "aboutMe": "About Me",
+  "CV": "Download CV",
+
   "error": "Error: Redacted",
   "textError": "This page could not be found. It either doesn’t exist or was deleted. Or perhaps you don’t exist.",
   "errorButton": "Back to homepage",
   "errorVideo": "Animation from Ghost in the Shell (1995)",
+
   "contactErrorMessage": "There was a problem sending your message",
   "contactSayHello": "Say hello",
   "contactEmail": "Your Email",
@@ -34,5 +41,56 @@
   "problemRequest": "There was a problem with your request",
   "problemYourRequest": "There was a problem with your request",
   "problem500": "There was a problem with the server, try again later",
-  "problem404": "There was a problem connecting to the server. Make sure you are connected to the internet"
+  "problem404": "There was a problem connecting to the server. Make sure you are connected to the internet",
+
+  "visitButton": "Visit website",
+
+  "rolesAdaptive": "Adaptive Design",
+  "rolesProfessional": "Professional Development",
+  "rolesQuikly": "Quickly and Efficiently",
+
+  "descEnglish": "This site was specially designed for learning English in Poland or remotely from anywhere in the world",
+  "headingEnglish": "Start learning English",
+  "textEnglish1": "Your journey to English language proficiency starts here! Our website offers personalized learning programs that will help you learn English faster and more efficiently. Choose from a variety of options: one-on-one lessons with professional, group lessons for communication and practice, or telephone lessons to improve your speaking skills.",
+  "textEnglish2": "But that is not all! On our website you will find reviews and comments from students who have already succeeded in learning English. This will help you see the perspectives and opportunities that come with learning English.",
+  "textEnglish3": "And most importantly, you can contact the teacher right now! Without leaving the page, send a message by mail, telegram or fill out a form on our website. Your journey into the world of the English language begins right now!",
+
+  "descMoneyGuard": "With this application you can always keep track of your expenses and income",
+  "headingMoneyGuard": "Calculate your budget",
+  "textMoneyGuard1": "Introducing our state-of-the-art app, a comprehensive solution designed to optimize your financial management. As a team leader and developer, I made sure that this application was not only functional, but also user-friendly and visually appealing.",
+  "textMoneyGuard2": "It's important to note that I personally implemented these new features. The feedback feature and language switching were added by me to improve the user experience. We value your feedback and strive to make our app as easy as possible for you. I invite you to try these new features and share your impressions. Your feedback is very important to us!",
+  "textMoneyGuard3": "Our app is an interactive platform for tracking your income and expenses. It presents data in an easy-to-digest tabular format accompanied by a dynamic chart. Users can select specific months and years to focus their financial overview, providing a personalized experience tailored to individual needs.",
+  "textMoneyGuard4": "A special feature is information on exchange rates, available in real time. This feature ensures that you are always aware of your current financial situation. The app provides a complete overview of your account balance for any selected period.",
+  "textMoneyGuard5": "We recently added a feedback feature that we highly encourage our users to explore. Your opinion and experience are invaluable to us, and this feature allows us to continually improve and adapt to the needs of our users.",
+  "textMoneyGuard6": "Another interesting addition is the language switching feature, allowing users to easily switch between English and Ukrainian. This ensures that our app is accessible and user-friendly to a wider audience.",
+  "textMoneyGuard7": "At its core, our app is more than just a financial tool, it's a comprehensive financial assistant designed just for you. We invite you to experience its capabilities and join us on the journey to efficient and effective financial management.",
+
+  "descWaterTracker": "Here you can constantly monitor your water balance",
+  "headingWaterTracker": "Watch your health",
+  "textWaterTracker1": "I am pleased to introduce our website, which will help you track your water balance. Every day, you can enter data on how much water you have drunk, and at the end of the day, see how close you have come to your goal.",
+  "textWaterTracker2": "In the profile settings, you can change the photo, name, gender, mail, and password. We have also added a water rate calculation feature that you can use, or you can enter your own value if you have a specific goal.",
+  "textWaterTracker3": "For convenience, we have provided a calendar where the amount of water drunk in the past days will be displayed in percentage terms. This will allow you to easily track your habits and see how they change over time.",
+  "textWaterTracker4": "Our website is not just a tool for tracking water consumption, it’s your personal assistant in maintaining a healthy lifestyle. It helps you stay hydrated, motivated, and healthy every day. Try it today and find out how easy it can be to maintain a healthy water balance!",
+
+  "descCarRent": "On this site you can choose a car just for you",
+  "headingCarRent": "Start traveling with us",
+  "textCarRent1": "I’m excited to introduce our website, a platform that offers car rental services. Here, you can choose a car that suits your needs and add it to your favorites for quick access in the future.",
+  "textCarRent2": "We offer a convenient filter that allows you to sort cars by brand, model, and price. This helps you quickly find the perfect car that matches your preferences and budget.",
+  "textCarRent3": "Upon landing on our website, you’ll be greeted with our company’s logo and a description explaining why our company is the best choice for car rental. We take pride in offering high-quality services and strive to provide the best experience for our customers.",
+  "textCarRent4": "Our website is more than just a car rental service, it’s your reliable partner in travel. We invite you to try it out today and discover how easy and convenient car rental can be!",
+
+  "descCinemania": "Here you can always find the latest new films",
+  "headingCinemania": "Go ahead and watch the movie",
+  "textCinemania1": "I’m thrilled to introduce our website, a hub for movie enthusiasts where you can always catch up on the latest film releases. On the homepage, you can explore the trends of the week and the new releases of the month, complete with their ratings. By clicking on a movie, you can view its description, release date, and genres.",
+  "textCinemania2": "You also have the option to add movies to your favorites, which you can later view in your library. The homepage features a constantly changing list of movies, and by clicking on it, you can watch its trailer.",
+  "textCinemania3": "In the catalog tab, you’ll find a comprehensive list of movies. You can choose one to watch or use the search engine to find a specific movie you’re interested in.",
+  "textCinemania4": "Our website is more than just a movie listing service, it’s a personalized cinema experience right at your fingertips. Try it out today and immerse yourself in the world of cinema!",
+
+  "descMinamal": "Here you can choose furniture for your home",
+  "headingMinamal": "Go ahead and choose furniture",
+  "textMinamal1": "I’m delighted to introduce our website, a destination for those seeking to furnish their spaces with taste and style. Here, you can choose from a wide range of furniture including tables, chairs, sofas, and more.",
+  "textMinamal2": "Our store is conveniently located in the heart of Kiev. You can verify this by clicking on the address at the bottom of the page. The website also features easy navigation, making your browsing experience smooth and enjoyable.",
+  "textMinamal3": "We understand the importance of communication in providing excellent service. That’s why we’ve provided a phone number that you can call to reach us. We’re always ready to assist you with any inquiries or concerns.",
+  "textMinamal4": "One of the key features of our website is the transparency in pricing. You can view the prices of the furniture directly, allowing you to make informed decisions based on your budget.",
+  "textMinamal5": "Our website is more than just a furniture store; it’s a platform designed to make your furniture shopping experience easy and enjoyable. Visit us today and discover the perfect pieces to transform your space!"
 }

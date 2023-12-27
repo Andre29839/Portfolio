@@ -23,11 +23,9 @@ export const Image = ({
   ...rest
 }) => {
   const [loaded, setLoaded] = useState(false);
-  const containerRef = useRef();
-
-  const src = baseSrc || (srcSet && srcSet.length > 0 ? srcSet[0] : undefined);
-
   const { themeId } = useTheme();
+  const containerRef = useRef();
+  const src = baseSrc || srcSet?.[0];
   const inViewport = useInViewport(containerRef, !getIsVideo(src));
 
   const onLoad = useCallback(() => {
@@ -76,18 +74,16 @@ const ImageElements = ({
   ...rest
 }) => {
   const reduceMotion = useReducedMotion();
-  const [showPlaceholder, setPlaceholder] = useState(true);
+  const [showPlaceholder, setShowPlaceholder] = useState(true);
   const [playing, setPlaying] = useState(!reduceMotion);
   const [videoSrc, setVideoSrc] = useState();
   const [videoInteracted, setVideoInteracted] = useState(false);
   const placeholderRef = useRef();
   const videoRef = useRef();
-
-  const hasMounted = useHasMounted();
-  const srcSetString = srcSetToString(srcSet);
-
   const isVideo = getIsVideo(src);
   const showFullRes = inViewport;
+  const srcSetString = srcSetToString(srcSet);
+  const hasMounted = useHasMounted();
 
   useEffect(() => {
     const resolveVideoSrc = async () => {
@@ -139,8 +135,8 @@ const ImageElements = ({
     videoSrc,
   ]);
 
-  const togglePlaying = e => {
-    e.preventDefault();
+  const togglePlaying = event => {
+    event.preventDefault();
 
     setVideoInteracted(true);
 
@@ -184,22 +180,22 @@ const ImageElements = ({
           )}
         </>
       )}
-      {!getIsVideo(src) && src && (
+      {!isVideo && (
         <img
           className={styles.element}
-          data-onLoadedData={loaded}
+          data-loaded={loaded}
           onLoad={onLoad}
           decoding="async"
-          src={showFullRes ? src.src : undefined}
+          src={showFullRes && src ? src.src : undefined}
           srcSet={showFullRes ? srcSetString : undefined}
-          width={src.width}
-          height={src.height}
+          // width={src.width}
+          // height={src.height}
           alt={alt}
           sizes={sizes}
           {...rest}
         />
       )}
-      {showPlaceholder && (
+      {showPlaceholder && placeholder && (
         <img
           aria-hidden
           className={styles.placeholder}
@@ -209,7 +205,7 @@ const ImageElements = ({
           src={placeholder.src}
           width={placeholder.width}
           height={placeholder.height}
-          onTransitionEnd={() => setPlaceholder(false)}
+          onTransitionEnd={() => setShowPlaceholder(false)}
           decoding="async"
           alt=""
           role="presentation"

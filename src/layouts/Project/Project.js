@@ -1,65 +1,70 @@
+import { forwardRef, useRef } from "react";
+
 import { Section } from "components/Section";
-import styles from "./_Project.module.scss";
-import { classes, cssProps, msToNum, numToMs } from "utils/style";
 import { Heading } from "components/Heading";
 import { Text } from "components/Text";
 import { Button } from "components/Button";
-import { forwardRef, useRef } from "react";
 import { Transition } from "components/Transition";
 import { tokens } from "components/ThemeProvider";
 import { Image } from "components/Image";
+
+import { classes, cssProps, msToNum, numToMs } from "utils/style";
+
+import styles from "./_Project.module.scss";
 
 const initDelay = 300;
 
 export function ProjectHeader({
   title,
   description,
-  linkLabel = "Visit website",
+  linkLabel,
   url,
   roles,
   className,
 }) {
-  <Section className={classes(styles.header, className)} as="section">
-    <div
-      className={styles.headerContent}
-      style={cssProps({ initDelay: numToMs(initDelay) })}
-    >
-      <div className={styles.details}>
-        <Heading className={styles.title} level={2} as="h1">
-          {title}
-        </Heading>
-        <Text className={styles.description} size="xl" as="p">
-          {description}
-        </Text>
-        {!!url && (
-          <Button
-            secondary
-            iconHoverShift
-            className={styles.linkButton}
-            icon="chevronRight"
-            href={url}
-          >
-            {linkLabel}
-          </Button>
+  return (
+    <Section className={classes(styles.header, className)} as="section">
+      <div
+        className={styles.headerContent}
+        style={cssProps({ initDelay: numToMs(initDelay) })}
+      >
+        <div className={styles.details}>
+          <Heading className={styles.title} level={2} as="h1">
+            {title}
+          </Heading>
+          <Text className={styles.description} size="xl" as="p">
+            {description}
+          </Text>
+          {!!url && (
+            <Button
+              secondary
+              iconHoverShift
+              className={styles.linkButton}
+              icon="chevronRight"
+              href={url}
+            >
+              {linkLabel}
+            </Button>
+          )}
+        </div>
+        {!!roles?.length && (
+          <ul className={styles.meta}>
+            {roles?.map((role, index) => (
+              <li
+                className={styles.metaItem}
+                style={cssProps({
+                  delay: numToMs(initDelay + 300 + index * 140),
+                })}
+                key={index}
+              >
+                <Text secondary>{role}</Text>
+              </li>
+            ))}
+          </ul>
         )}
       </div>
-      {!!roles?.lenght && (
-        <ul className={styles.meta}>
-          {roles?.map((role, index) => (
-            <li
-              className={styles.metaItem}
-              style={cssProps({
-                delay: numToMs(initDelay + 300 + index * 140),
-              })}
-              key={role}
-            >
-              <Text secondary>{role}</Text>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  </Section>;
+    </Section>
+  );
 }
 
 export const ProjectContainer = ({ className, ...rest }) => (
@@ -74,7 +79,7 @@ export const ProjectSection = forwardRef(
       padding = "both",
       fullHeight,
       backgroundOverlayOpacity = 0.9,
-      backgroundElemnt,
+      backgroundElement,
       children,
       ...rest
     },
@@ -87,12 +92,12 @@ export const ProjectSection = forwardRef(
       ref={ref}
       {...rest}
     >
-      {!!backgroundElemnt && (
+      {!!backgroundElement && (
         <div
           className={styles.sectionBackground}
           style={cssProps({ opacity: backgroundOverlayOpacity })}
         >
-          {backgroundElemnt}
+          {backgroundElement}
         </div>
       )}
       <Section className={styles.sectionInner} data-padding={padding}>
@@ -109,7 +114,7 @@ export const ProjectBackground = ({ opacity = 0.7, className, ...rest }) => {
     <Transition in timeout={msToNum(tokens.base.durationM)}>
       {visible => (
         <div
-          className={(classes(styles.backgroundImage), className)}
+          className={classes(styles.backgroundImage, className)}
           data-visible={visible}
         >
           <div className={styles.backgroundImageElement} ref={imageRef}>
@@ -154,41 +159,25 @@ export const ProjectSectionHeading = ({
   />
 );
 
-export const ProjectSectionText = ({ className, ...rest }) => (
-  <Text
+export const ProjectSectionText = ({ textProject, className, ...rest }) => (
+  <div
     className={classes(styles.sectionText, className)}
     size="l"
     as="p"
     {...rest}
-  />
-);
-
-export const ProjectTextRow = ({
-  center,
-  stretch,
-  justify = "center",
-  width = "m",
-  noMargin,
-  className,
-  centerMobile,
-  ...rest
-}) => (
-  <div
-    className={classes(styles.textRow, className)}
-    data-center={center}
-    data-stretch={stretch}
-    data-center-mobile={centerMobile}
-    data-no-margin={noMargin}
-    data-width={width}
-    data-justify={justify}
-    {...rest}
-  />
-);
-
-export const ProjectSectionColums = ({ className, centered, ...rest }) => (
-  <ProjectSectionContent
-    className={classes(styles.sectionColumns, className)}
-    data-centered={centered}
-    {...rest}
-  />
+  >
+    {!!textProject?.length && (
+      <ul className={styles.meta}>
+        {textProject?.map((text, index) => (
+          <li
+            className={styles.metaItem}
+            style={cssProps({ delay: numToMs(initDelay + 300 + index * 140) })}
+            key={index}
+          >
+            <Text secondary>{text}</Text>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
 );

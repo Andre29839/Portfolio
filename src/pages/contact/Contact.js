@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import Link from "next/link";
 
 import { tokens } from "components/ThemeProvider";
 import { Section } from "components/Section";
@@ -180,7 +181,7 @@ export default function Contact() {
               href="/"
               icon="chevronRight"
             >
-              {dict?.errorButton}
+              <Link href="/">{dict?.errorButton}</Link>
             </Button>
           </div>
         )}

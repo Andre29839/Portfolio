@@ -16,6 +16,8 @@ import { cssProps } from "utils/style";
 import ArrowDown from "assets/arrow-down.svg";
 
 import styles from "./_Intro.module.scss";
+import { Button } from "components/Button";
+import { handleDownloadCV } from "helpers/handleDownloadCV";
 
 const DisplacementSphere = dynamic(() =>
   import("layouts/Home/DisplacementSphere").then(mod => mod.DisplacementSphere)
@@ -87,7 +89,7 @@ export function Intro({
                   >
                     {dict?.developer}
                   </span>
-                  <span className={styles.line} data-statu={status} />
+                  <span className={styles.line} data-status={status} />{" "}
                 </span>
                 <div className={styles.row} component="span">
                   <AnimatePresence>
@@ -112,6 +114,15 @@ export function Intro({
                     ))}
                   </AnimatePresence>
                 </div>
+                <Button
+                  secondary
+                  className={styles.button}
+                  data-visible={visible}
+                  icon="cv"
+                  onClick={handleDownloadCV}
+                >
+                  {dict?.CV}
+                </Button>
               </Heading>
             </header>
             <Link

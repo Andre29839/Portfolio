@@ -225,7 +225,8 @@
     }
 }
 
-.description {
+.description,
+.projectText {
     padding-bottom: var(--spaceL);
 
     @include mediaUseMotion {

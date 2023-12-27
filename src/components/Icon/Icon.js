@@ -14,6 +14,7 @@ import Pause from "./svg/pause.svg";
 import Play from "./svg/play.svg";
 import Send from "./svg/send.svg";
 import LinkedIn from "./svg/linkedin.svg";
+import CV from "./svg/cv.svg";
 
 import styles from "./_Icon.module.scss";
 
@@ -32,6 +33,7 @@ export const icons = {
   play: Play,
   send: Send,
   linkedIn: LinkedIn,
+  cv: CV,
 };
 
 export const Icon = ({ icon, className, ...rest }) => {

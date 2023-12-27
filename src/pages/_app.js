@@ -40,6 +40,7 @@ const App = ({ Component, pageProps }) => {
                 rel="canonical"
                 href={`${process.env.NEXT_PUBLIC_WEBSITE_URL}${canonicalRoute}`}
               />
+              <title>Andrii Nepomniashchyi</title>
             </Head>
             <NavBar />
             <main className={styles.app} tabIndex={-1} id="MainContent">
