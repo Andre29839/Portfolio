@@ -1,8 +1,8 @@
-import moneyGuard from "assets/money-guard.jpg";
-import waterTracker from "assets/water-tracker.png";
-import carRent from "assets/car-rent.jpg";
-import cinemania from "assets/cinemania.jpg";
-import minimal from "assets/minimal.jpg";
+import moneyGuard from "../../assets/money-guard.jpg";
+import waterTracker from "../../assets/water-tracker.png";
+import carRent from "../../assets/car-rent.jpg";
+import cinemania from "../../assets/cinemania.jpg";
+import minimal from "../../assets/minimal.jpg";
 
 export const educationProjects = [
   {
