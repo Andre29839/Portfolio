@@ -49,7 +49,7 @@ const baseTokens = {
   space4XL: "96px",
   space5XL: "128px",
   space6XL: "144px",
-  space7XL: "176px",
+  space7XL: "192px",
   zIndex0: 0,
   zIndex1: 4,
   zIndex2: 8,

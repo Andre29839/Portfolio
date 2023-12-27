@@ -18,6 +18,7 @@ import styles from "./_Profile.module.scss";
 
 const ProfileText = ({ visible, titleId }) => {
   const dict = useDictionary();
+  const profileTexts = ["profileText1", "profileText2", "profileText3"];
 
   return (
     <>
@@ -29,14 +30,17 @@ const ProfileText = ({ visible, titleId }) => {
       >
         <DecoderText text={dict?.hiHere} start={visible} delay={500} />
       </Heading>
-      <Text
-        className={styles.description}
-        data-visible={visible}
-        size="1"
-        as="p"
-      >
-        {dict?.profileText}
-      </Text>
+      {profileTexts.map(textKey => (
+        <Text
+          key={textKey}
+          className={styles.description}
+          data-visible={visible}
+          size="l"
+          as="p"
+        >
+          {dict?.[textKey]}
+        </Text>
+      ))}
     </>
   );
 };
