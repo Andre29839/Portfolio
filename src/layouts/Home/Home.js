@@ -91,7 +91,7 @@ export const Home = () => {
         title={dict?.commercialProjects}
         description={dict?.commercialProjectDesc}
         buttonText={dict?.buttonProject}
-        buttonLink="/projects/commercial"
+        buttonLink="/commercial"
         model={{
           type: "laptop",
           alt: dict?.commercialProjects,
@@ -112,7 +112,7 @@ export const Home = () => {
         title={dict?.mobileApplication")}
         description={dict?.mobileDesc")}
         buttonText={dict?.buttonProject")}
-        buttonLink="/projects/mobile"
+        buttonLink="/mobile"
         model={{
           type: "phone",
           alt: dict?.mobileApplication"),
@@ -136,7 +136,7 @@ export const Home = () => {
         title={dict?.educationProjects}
         description={dict?.educationProjectDesc}
         buttonText={dict?.buttonProject}
-        buttonLink="/projects/education"
+        buttonLink="/education"
         model={{
           type: "laptop",
           alt: dict?.educationProjects,
